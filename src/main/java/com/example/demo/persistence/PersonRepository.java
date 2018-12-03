@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.persistence;
 
+import com.example.demo.Person;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 

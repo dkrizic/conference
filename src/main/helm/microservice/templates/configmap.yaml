@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: microservice
+  labels:
+    app: microservice
+data:
+  application.yaml: |-
+    server:
+      port: 80
+    spring:
+      data:
+        neo4j:
+          url: bolt://neo4j.persistence
