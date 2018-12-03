@@ -11,4 +11,4 @@ data:
     spring:
       data:
         neo4j:
-          url: bolt://neo4j.persistence
+          url: bolt://neo4j-neo4j.persistence

@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: microservice
+  labels:
+    component: microservice
+subjects:
+- kind: ServiceAccount
+  name: microservice
+roleRef:
+  kind: Role
+  name: microservice
+  apiGroup: rbac.authorization.k8s.io
+

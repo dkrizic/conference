@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "microservice.fullname" . }}
   labels:
+    app: {{ include "microservice.name" . }}
     app.kubernetes.io/name: {{ include "microservice.name" . }}
     helm.sh/chart: {{ include "microservice.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
@@ -11,11 +12,13 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
+      app: {{ include "microservice.name" . }}
       app.kubernetes.io/name: {{ include "microservice.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
+        app: {{ include "microservice.name" . }}
         app.kubernetes.io/name: {{ include "microservice.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
@@ -29,11 +32,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /actuator/health
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /actuator/health
               port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
@@ -49,3 +52,4 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      serviceAccountName: microservice

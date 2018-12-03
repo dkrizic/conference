@@ -1,2 +1,11 @@
 server:
   port: 8080
+spring:
+  application:
+    name: microservice
+  cloud:
+    kubernetes:
+      reload:
+        enabled: false
+      config:
+        enabled: true

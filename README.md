@@ -70,7 +70,7 @@ Create namespace persistence
 
 Install Neo4j
 
-    $ helm --name neo4j --namespace persistence --set core.numberOfServers=1,authEnabled=false,imageTag=3.5.0 install stable/neo4j```
+    $ helm --name neo4j --namespace persistence --set core.numberOfServers=1,authEnabled=false,imageTag=3.5.0 install stable/neo4j
 
 ## Grafana and Prometheus
 
