@@ -13,7 +13,7 @@ spring:
         enabled: true
   data:
     neo4j:
-      uri: bolt://neo4j-neo4j.persistence:7687
+      uri: bolt://neo4j
 management:
   endpoint:
     metrics.enabled: true

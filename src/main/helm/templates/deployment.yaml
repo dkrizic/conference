@@ -1,31 +1,31 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ include "microservice.fullname" . }}
+  name: {{ include "demo.fullname" . }}
   labels:
-    app: {{ include "microservice.name" . }}
-    app.kubernetes.io/name: {{ include "microservice.name" . }}
-    helm.sh/chart: {{ include "microservice.chart" . }}
+    app.kubernetes.io/name: {{ include "demo.name" . }}
+    helm.sh/chart: {{ include "demo.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "microservice.name" . }}
-      app.kubernetes.io/name: {{ include "microservice.name" . }}
+      app.kubernetes.io/name: {{ include "demo.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "microservice.name" . }}
-        app.kubernetes.io/name: {{ include "microservice.name" . }}
+        app.kubernetes.io/name: {{ include "demo.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: SPRING_APPLICATION_NAME
+              value: "{{ include "demo.name" . }}"
           ports:
             - name: http
               containerPort: 80
@@ -52,4 +52,4 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
-      serviceAccountName: microservice
+      serviceAccountName: {{ include "demo.name" . }}

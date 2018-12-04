@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: microservice
+  name: {{ include "demo.name" . }}
   labels:
-    app: microservice
+    app: {{ include "demo.name" . }}
 data:
   application.yaml: |-
     server:
@@ -11,4 +11,4 @@ data:
     spring:
       data:
         neo4j:
-          url: bolt://neo4j-neo4j.persistence
+          url: {{ .Values.neo4j.uri }}
