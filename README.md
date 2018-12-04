@@ -133,7 +133,7 @@ Go to the directory
     
 and install the application
 
-    helm install --name microservice --namespace business .
+    helm install --name demo --namespace business --set 'ingress.enabled=true,ingress.hosts={demo.192.168.99.100.nip.io}' .
 
 # TODO
 
