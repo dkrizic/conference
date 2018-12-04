@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.Person;
 import com.example.demo.persistence.PersonRepository;
+import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class PersonController {
 
     @GetMapping
     @ApiOperation("Find all persons")
+    @Timed("persons_findall")
     Iterable<Person> findAllPersons() {
         return personRepository.findAll();
     }
