@@ -11,4 +11,4 @@ data:
     spring:
       data:
         neo4j:
-          url: {{ .Values.neo4j.uri }}
+          uri: {{ .Values.neo4j.uri }}

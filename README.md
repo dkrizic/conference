@@ -113,6 +113,12 @@ and login as admin with the given password. Add a datasource:
 * URL: http://prometheus-server/
 * Access: Server
 
+## RabbitMQ
+
+Install RabbitMQ with
+
+    $ helm install --name rabbitmq --namespace messaging --set 'ingress.enabled=true,ingress.hostName=rabbitmq.192.168.99.100.nip.io' stable/rabbitmq
+
 # The Business Service
 
 Create namespace for the business application
@@ -133,9 +139,4 @@ Go to the directory
     
 and install the application
 
-    helm install --name demo --namespace business --set 'ingress.enabled=true,ingress.hosts={demo.192.168.99.100.nip.io}' .
-
-# TODO
-
-    kubernetes create namespace messaging
-    helm install --name rabbitmq --namespace messaging stable/rabbitmq
+	helm install --name demo --namespace business --set 'ingress.enabled=true,ingress.hosts={demo.192.168.99.100.nip.io},neo4j.uri=bolt://neo4j-neo4j.persistence' .
