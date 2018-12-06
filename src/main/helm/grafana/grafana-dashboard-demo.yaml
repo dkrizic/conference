@@ -24,7 +24,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": null,
+      "id": 1,
       "links": [],
       "panels": [
         {
@@ -74,7 +74,15 @@ data:
               "expr": "sum(persons_findall_seconds_sum) / sum(persons_findall_seconds_count)",
               "format": "time_series",
               "intervalFactor": 1,
+              "legendFormat": "Microservice",
               "refId": "B"
+            },
+            {
+              "expr": "rate(neo4j_bolt_accumulated_processing_time[2m]) / 1000",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Neo4j",
+              "refId": "C"
             }
           ],
           "thresholds": [],
@@ -128,7 +136,7 @@ data:
         "list": []
       },
       "time": {
-        "from": "now-6h",
+        "from": "now-5m",
         "to": "now"
       },
       "timepicker": {
@@ -158,6 +166,6 @@ data:
       },
       "timezone": "",
       "title": "Demo Microservice Dashboard",
-      "uid": null,
-      "version": 0
+      "uid": "TAgS3GEiz",
+      "version": 1
     }
