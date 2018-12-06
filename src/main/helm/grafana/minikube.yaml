@@ -1,0 +1,9 @@
+persistence:
+  enabled: true
+  size: 1G
+  accessModes:
+  - ReadWriteOnce
+ingress: 
+  enabled: true
+  hosts: 
+  - "grafana.192.168.99.100.nip.io"

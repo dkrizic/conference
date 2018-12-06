@@ -1,0 +1,5 @@
+server: 
+  ingress: 
+    enabled: true
+    hosts: 
+    - "prometheus.192.168.99.100.nip.io"

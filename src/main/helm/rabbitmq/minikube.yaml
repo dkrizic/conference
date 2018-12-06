@@ -1,0 +1,3 @@
+ingress:
+  enabled: true
+  hostName: rabbitmq.192.168.99.100.nip.io

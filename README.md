@@ -61,27 +61,25 @@ Check that all pods are up and running
 ## Install Tiller (for Helm)
 
     $ helm init
+    
+## Install base directory
+
+Go to the directory
+
+    $ cd src/main/helm
 
 ## Neo4j
 
-Create namespace persistence
-
-    $ kubectl create namespace persistence
-
 Install Neo4j
 
-    $ helm --name neo4j --namespace persistence --set core.numberOfServers=1,authEnabled=false,imageTag=3.5.0 install stable/neo4j
+    $ helm install --name neo4j --namespace persistence -f neo4j/minikube.yaml stable/neo4j
 
 ## Grafana and Prometheus
 
-Create namespace monitoring
-
-    $ kubectl create namespace monitoring
-
 Install Grafana and Prometheus
 
-    $ helm install --name prometheus --namespace monitoring --set 'server.ingress.enabled=true,server.ingress.hosts={"prometheus.192.168.99.100.nip.io"}' stable/prometheus
-    $ helm install --name grafana --namespace monitoring --set 'persistence.enabled=true,persistence.size=1G,persistence.accessModes={ReadWriteOnce},ingress.enabled=true,ingress.hosts={"grafana.192.168.99.100.nip.io"}' stable/grafana
+    $ helm install --name prometheus --namespace monitoring -f prometheus/minikube.yaml stable/prometheus
+    $ helm install --name grafana --namespace monitoring -f grafana/minikube.yaml stable/grafana
 
 Wait for all pods being up and activate port forward to prometheus
 
@@ -117,7 +115,7 @@ and login as admin with the given password. Add a datasource:
 
 Install RabbitMQ with
 
-    $ helm install --name rabbitmq --namespace messaging --set 'ingress.enabled=true,ingress.hostName=rabbitmq.192.168.99.100.nip.io' stable/rabbitmq
+    $  helm install --name rabbitmq --namespace messaging -f rabbitmq/minikube.yaml stable/rabbitmq
 
 # The Business Service
 
@@ -139,4 +137,4 @@ Go to the directory
     
 and install the application
 
-	helm install --name demo --namespace business --set 'ingress.enabled=true,ingress.hosts={demo.192.168.99.100.nip.io},neo4j.uri=bolt://neo4j-neo4j.persistence' .
+	helm install --name demo --namespace business -f demo/minikube.yaml demo

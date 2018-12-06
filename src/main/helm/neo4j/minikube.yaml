@@ -1,0 +1,4 @@
+core: 
+  numberOfServers: 1
+authEnabled: false
+imageTag: 3.5.0
