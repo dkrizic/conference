@@ -2,3 +2,11 @@ core:
   numberOfServers: 1
 authEnabled: false
 imageTag: 3.5.0
+core:
+  extraVars:
+  - name: NEO4J_metrics_enabled
+    value: "true"
+  - name: NEO4J_metrics_prometheus_enabled
+    value: "true"
+  - name: NEO4J_metrics_prometheus_endpoint
+    value: "0.0.0.0:2004"
