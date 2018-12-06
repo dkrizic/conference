@@ -12,7 +12,6 @@ sidecar:
     enabled: true
     searchNamespace: monitoring
     label: grafana-dashboard
-sidecar:
   datasources:
     enabled: true
     searchNamespace: monitoring
