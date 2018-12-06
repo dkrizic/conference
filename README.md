@@ -74,6 +74,10 @@ Install Neo4j
 
     $ helm install --name neo4j --namespace persistence -f neo4j/minikube.yaml stable/neo4j
 
+Run this to enable prometheus to find the metrics automatically:
+
+   $ kubectl -n persistence patch service neo4j-neo4j --patch "$(cat neo4j/service.yaml)"
+
 ## Grafana and Prometheus
 
 Install Grafana and Prometheus

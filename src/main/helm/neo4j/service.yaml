@@ -1,0 +1,7 @@
+metadata:
+  annotations:
+    prometheus.io/path: /metrics
+    prometheus.io/port: "2004"
+    prometheus.io/scheme: http
+    prometheus.io/scrape: "true"
+
