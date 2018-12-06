@@ -7,3 +7,13 @@ ingress:
   enabled: true
   hosts: 
   - "grafana.192.168.99.100.nip.io"
+sidecar:
+  dashboards:
+    enabled: true
+    searchNamespace: monitoring
+    label: grafana-dashboard
+sidecar:
+  datasources:
+    enabled: true
+    searchNamespace: monitoring
+    label: grafana-datasource
