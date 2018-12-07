@@ -16,4 +16,6 @@ public class Room {
     @Relationship(type="IN_LOCATION")
     public Location location;
 
+    public String name;
+
 }

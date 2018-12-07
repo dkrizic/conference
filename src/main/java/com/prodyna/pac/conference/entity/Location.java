@@ -18,4 +18,7 @@ public class Location {
     @Relationship(type="IN_LOCATION", direction="INCOMING")
     public Set<Room> rooms;
 
+    @Relationship(type="IN_LOCATION", direction = "INCOMING")
+    public Set<Event> events;
+
 }
