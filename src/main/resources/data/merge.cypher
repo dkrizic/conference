@@ -20,6 +20,7 @@ load csv with headers from "file:/slots.csv" as line fieldterminator ','
 load csv with headers from "file:/events.csv" as line fieldterminator ','
 	merge (e:Event {id:line.id})
 		set e.location = line.location,
+                e.name = line.name,
  		e.startDate = line.startDate,
                 e.endDate = line.endDate;
 

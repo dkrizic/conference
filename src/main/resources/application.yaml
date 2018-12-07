@@ -14,6 +14,8 @@ spring:
   data:
     neo4j:
       uri: bolt://neo4j
+    rest:
+      basePath: /api
 management:
   endpoint:
     metrics.enabled: true

@@ -11,6 +11,5 @@ import java.util.List;
 @RepositoryRestResource(path="/locations")
 public interface LocationRepository extends Neo4jRepository<Location,Long> {
 
-    List<Location> findByName( String name );
 
 }
