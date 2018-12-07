@@ -1,0 +1,4 @@
+persistence:
+  size: 1G
+metrics:
+  enabled: true
