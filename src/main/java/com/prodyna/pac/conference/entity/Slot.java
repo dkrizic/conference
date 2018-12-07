@@ -3,6 +3,9 @@ package com.prodyna.pac.conference.entity;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.typeconversion.DateLong;
+import org.springframework.hateoas.core.Relation;
 
 
 import java.util.Date;
@@ -14,8 +17,12 @@ public class Slot {
     @GeneratedValue
     public Long _id;
 
+    @Relationship(type = "ON")
     public Event event;
+
+    @Relationship(type = "IN_ROOM")
     public Room room;
-    public Date time;
+
+    public Date date;
 
 }

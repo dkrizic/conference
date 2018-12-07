@@ -1,9 +1,7 @@
 package com.prodyna.pac.conference.entity;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.Index;
-import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.*;
+import org.springframework.hateoas.core.Relation;
 
 import java.util.Set;
 
@@ -17,6 +15,7 @@ public class Location {
     @Index(unique = true)
     public String name;
 
+    @Relationship(type="IN_ROOM")
     public Set<Room> rooms;
 
 }
