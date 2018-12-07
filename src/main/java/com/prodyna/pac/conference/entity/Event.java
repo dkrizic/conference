@@ -7,6 +7,7 @@ import org.neo4j.ogm.annotation.Relationship;
 import org.springframework.hateoas.core.Relation;
 
 import java.util.Date;
+import java.util.Set;
 
 @NodeEntity
 public class Event {
@@ -20,8 +21,11 @@ public class Event {
 
     public String name;
 
-    public Date startDate;
+    public String startDate;
 
-    public long daysDuration;
+    public String endDate;
+
+    @Relationship(type="ON_EVENT",direction=Relationship.INCOMING)
+    public Set<Slot> slots;
 
 }

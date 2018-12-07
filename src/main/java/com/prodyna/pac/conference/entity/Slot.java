@@ -23,9 +23,9 @@ public class Slot {
     @Relationship(type = "IN_ROOM")
     public Room room;
 
-    @Relationship(type="IN_SLOT", direction="INCOMING")
+    @Relationship(type="IN_SLOT", direction = Relationship.INCOMING)
     public Talk talk;
 
-    public Date date;
+    public String date;
 
 }

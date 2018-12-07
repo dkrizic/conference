@@ -6,6 +6,8 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.springframework.hateoas.core.Relation;
 
+import java.util.Set;
+
 @NodeEntity
 public class Room {
 
@@ -17,5 +19,8 @@ public class Room {
     public Location location;
 
     public String name;
+
+    @Relationship(type="IN_ROOM",direction = Relationship.INCOMING)
+    public Set<Slot> slots;
 
 }
