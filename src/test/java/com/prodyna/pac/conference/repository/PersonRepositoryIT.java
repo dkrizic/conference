@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.prodyna.pac.conference.repository;
 
-import com.example.demo.persistence.PersonRepository;
+import com.prodyna.pac.conference.entity.Person;
+import com.prodyna.pac.conference.repository.PersonRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

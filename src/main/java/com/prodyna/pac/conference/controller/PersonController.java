@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.prodyna.pac.conference.controller;
 
-import com.example.demo.Person;
-import com.example.demo.persistence.PersonRepository;
+import com.prodyna.pac.conference.entity.Person;
+import com.prodyna.pac.conference.repository.PersonRepository;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

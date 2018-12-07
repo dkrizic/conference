@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.prodyna.pac.conference.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class SwaggerConfiguration {
 
     @Bean
     public Docket api() {
