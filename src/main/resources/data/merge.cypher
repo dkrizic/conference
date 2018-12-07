@@ -15,13 +15,13 @@ load csv with headers from "file:/slots.csv" as line fieldterminator ','
 	merge (s:Slot {id:line.id})
 		set s.event = line.event,
  		s.room = line.room,
-                s.date = line.date;
+                s.datetime = datetime(line.date);
 
 load csv with headers from "file:/events.csv" as line fieldterminator ','
 	merge (e:Event {id:line.id})
 		set e.location = line.location,
- 		e.startDate = line.room,
-                e.durationDays = line.durationDays;
+ 		e.startDate = date(line.startDate),
+                e.endDate = toInt(line.endDate);
 
 load csv with headers from "file:/talks.csv" as line fieldterminator ','
 	merge (t:Talk {id:line.id})
