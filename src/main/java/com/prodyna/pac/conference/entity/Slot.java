@@ -17,7 +17,7 @@ public class Slot {
     @GeneratedValue
     public Long _id;
 
-    @Relationship(type = "ON")
+    @Relationship(type = "ON_EVENT")
     public Event event;
 
     @Relationship(type = "IN_ROOM")

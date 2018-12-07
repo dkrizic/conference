@@ -15,7 +15,7 @@ public class Location {
     @Index(unique = true)
     public String name;
 
-    @Relationship(type="IN_ROOM")
+    @Relationship(type="IN_LOCATION", direction="INCOMING")
     public Set<Room> rooms;
 
 }
