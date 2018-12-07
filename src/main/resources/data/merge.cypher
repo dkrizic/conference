@@ -21,7 +21,7 @@ load csv with headers from "file:/events.csv" as line fieldterminator ','
 	merge (e:Event {id:line.id})
 		set e.location = line.location,
  		e.startDate = date(line.startDate),
-                e.endDate = toInt(line.endDate);
+                e.endDate = date(line.endDate);
 
 load csv with headers from "file:/talks.csv" as line fieldterminator ','
 	merge (t:Talk {id:line.id})
