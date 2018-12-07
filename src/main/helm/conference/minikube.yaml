@@ -1,6 +1,6 @@
 ingress:
   enabled: true
   hosts: 
-  - demo.192.168.99.100.nip.io
+  - conference.192.168.99.100.nip.io
 neo4j:
   uri: bolt://neo4j-neo4j.persistence

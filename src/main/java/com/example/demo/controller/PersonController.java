@@ -6,9 +6,8 @@ import io.micrometer.core.annotation.Timed;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/persons")
@@ -21,8 +20,15 @@ public class PersonController {
     @GetMapping
     @ApiOperation("Find all persons")
     @Timed("persons_findall")
-    Iterable<Person> findAllPersons() {
-        return personRepository.findAll();
+    ResponseEntity<Iterable<Person>> findAllPersons() {
+        return ResponseEntity.ok( personRepository.findAll() );
+    }
+
+    @PostMapping
+    @ApiOperation("Create a person")
+    @Timed("persons_create")
+    ResponseEntity<Person> createPerson(Person person ) {
+        return ResponseEntity.ok( personRepository.save( person ) );
     }
 
 }

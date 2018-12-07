@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.prodyna.pac.microservice</groupId>
-    <artifactId>microservice</artifactId>
+    <groupId>com.prodyna.pac.conference</groupId>
+    <artifactId>conference</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>microservice</name>
+    <name>conference</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -23,19 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <version.dockerfile.maven.plugin>1.4.9</version.dockerfile.maven.plugin>
-        <spring.cloud.dependencies.version>Finchley.RELEASE</spring.cloud.dependencies.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
 
@@ -118,7 +106,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>dkrizic/microservice</repository>
+                    <repository>dkrizic/conference</repository>
                     <tag>latest</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>

@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "demo.fullname" . }}
+  name: {{ include "conference.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "demo.name" . }}
-    helm.sh/chart: {{ include "demo.chart" . }}
+    app.kubernetes.io/name: {{ include "conference.name" . }}
+    helm.sh/chart: {{ include "conference.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   annotations:
@@ -20,5 +20,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: {{ include "demo.name" . }}
+    app.kubernetes.io/name: {{ include "conference.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

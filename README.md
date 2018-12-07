@@ -125,7 +125,7 @@ Install RabbitMQ with
 
 Create namespace for the business application
 
-    $ kubernetes create namespace business
+    $ kubernetes create namespace conference
     
 Build the application
 
@@ -141,4 +141,11 @@ Go to the directory
     
 and install the application
 
-	helm install --name demo --namespace business -f demo/minikube.yaml demo
+	helm install --name conference --namespace conference -f conference/minikube.yaml conference
+	
+Access
+
+http://conference.192.168.99.100.nip.io
+
+for accessing the UI.
+
