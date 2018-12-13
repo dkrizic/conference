@@ -74,9 +74,42 @@ Install Neo4j
 
     $ helm install --name neo4j --namespace persistence -f neo4j/minikube.yaml stable/neo4j
 
-Run this to enable prometheus to find the metrics automatically:
+For better development we want to use a static Minikube nodeport in order to be able to access Neo4j from outside the cluster, so we first delete the neo4j service
 
-   $ kubectl -n persistence patch service neo4j-neo4j --patch "$(cat neo4j/service.yaml)"
+    $ kubectl -n persistence delete service neo4j-neo4j 
+    
+and replace it with our own version
+
+    $ kubectl -n persistence create -f neo4j/service.yaml 
+
+### Access Neo4j from local machine
+
+Open http://192.168.99.100:32000/ and connect to the database 
+
+    bolt://192.168.99.100:32001 
+
+without authentication.
+
+### Import data to neo4j
+
+Copy the data from src/main/data to the running neo4j pod:
+
+    $ cd src/main/data
+    $ kubectl -n persistence cp . neo4j-neo4j-core-0:/var/lib/neo4j/import
+    
+Now exec into the running neo4j container 
+
+    $ kubectl -n persistence exec -ti neo4j-neo4j-core-0 bash
+
+and run the following commands:
+
+    # /var/lib/neo4j/import/import/merge.cypher | cypher-shell
+    
+We can now verify by running:
+
+    # echo -n "match (n) return n;" | cypher-shell
+    
+Should show use the database entries containing Persons, Rooms, Events and Talks.
 
 ## Grafana and Prometheus
 
