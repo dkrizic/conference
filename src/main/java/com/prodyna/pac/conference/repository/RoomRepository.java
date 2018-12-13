@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.repository;
 
+import com.prodyna.pac.conference.description.RoomDescription;
 import com.prodyna.pac.conference.entity.Room;
 import com.prodyna.pac.conference.entity.Talk;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,6 @@ public interface RoomRepository extends Neo4jRepository<Room,Long> {
 
     @RestResource(path = "talks",rel="talks")
     @Query("match (r:Room {id:{roomId}})--(s:Slot)--(t:Talk) return t")
-    Page<Set<Talk>> findTalks(@Param("roomId") String roomId, Pageable p );
+    Page<Talk> findTalks(@Param("roomId") String roomId, Pageable p );
 
 }

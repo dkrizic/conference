@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.entity;
 
+import lombok.*;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -10,6 +11,11 @@ import org.springframework.hateoas.core.Relation;
 
 import java.util.Date;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 @NodeEntity
 public class Slot {
 
@@ -26,6 +32,6 @@ public class Slot {
     @Relationship(type="IN_SLOT", direction = Relationship.INCOMING)
     public Talk talk;
 
-    public String date;
+    public String datetime;
 
 }

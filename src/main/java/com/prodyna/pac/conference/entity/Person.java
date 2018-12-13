@@ -1,9 +1,15 @@
 package com.prodyna.pac.conference.entity;
 
+import lombok.*;
 import org.neo4j.ogm.annotation.*;
 
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 @NodeEntity
 public class Person {
 
@@ -18,4 +24,8 @@ public class Person {
 
     @Relationship(type="BY_PERSON", direction=Relationship.INCOMING)
     public Set<Talk> talks;
+
+    public String getId() {
+        return id;
+    }
 }

@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: demo
+  servlet:
+    multipart:
+      enabled: true
+      location: /tmp
   cloud:
     kubernetes:
       discovery:
@@ -13,7 +17,7 @@ spring:
         enabled: true
   data:
     neo4j:
-      uri: bolt://neo4j
+      uri: bolt://192.168.99.100:32001
     rest:
       basePath: /api
 management:
@@ -29,4 +33,20 @@ management:
       server:
         auto-time-requests: true
   security:
+    enabled: false
+graphql:
+  servlet:
+    mapping: /graphql
+    enabled: true
+    corsEnabled: true
+    exception-handlers-enabled: true
+graphiql:
+  mapping: /graphiql
+  endpoint:
+    graphql: /graphql
+    subscriptions: /subscriptions
+  static:
+    basePath: /
+  pageTitle: Conference GraphQL Server
+  cnd:
     enabled: false

@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.entity;
 
+import lombok.*;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -8,6 +9,11 @@ import org.springframework.hateoas.core.Relation;
 
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 @NodeEntity
 public class Room {
 

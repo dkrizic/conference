@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.repository;
 
+import com.prodyna.pac.conference.description.EventDescription;
 import com.prodyna.pac.conference.entity.Event;
 import com.prodyna.pac.conference.entity.Talk;
 import org.springframework.data.domain.Page;
@@ -14,11 +15,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-@RepositoryRestResource(path="/events")
+@RepositoryRestResource(path="/events",excerptProjection = EventDescription.class)
 public interface EventRepository extends Neo4jRepository<Event,Long> {
 
-    @RestResource(path="talks")
-    @Query("match (e:Event {id:{eventId}})--(s:Slot)--(t:Talk) return t")
-    Page<Set<Talk>> findTalksForEvent(@Param("eventId") String eventId, Pageable p );
+    @RestResource(path="talks",rel = "talks")
+    @Query(value = "match (e:Event)--(s:Slot)--(t:Talk) where id(e) = {eventId} return t",countQuery = "match (e:Event)--(s:Slot)--(t:Talk) where id(e) = {eventId} return count(t)")
+    Page<Talk> findTalksForEvent(@Param("eventId") int eventId, Pageable p );
 
 }
