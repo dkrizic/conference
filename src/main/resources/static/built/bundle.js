@@ -28587,7 +28587,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
- // tag::vars[]
+
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -28611,9 +28611,7 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
-var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js"); // end::vars[]
-// tag::app[]
-
+var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js");
 
 var App =
 /*#__PURE__*/
@@ -28656,9 +28654,7 @@ function (_React$Component) {
   }]);
 
   return App;
-}(React.Component); // end::app[]
-// tag::event-list[]
-
+}(React.Component);
 
 var EventList =
 /*#__PURE__*/
@@ -28685,9 +28681,7 @@ function (_React$Component2) {
   }]);
 
   return EventList;
-}(React.Component); // end::event-list[]
-// tag::event[]
-
+}(React.Component);
 
 var Event =
 /*#__PURE__*/
@@ -28708,11 +28702,9 @@ function (_React$Component3) {
   }]);
 
   return Event;
-}(React.Component); // end::event[]
-// tag::render[]
+}(React.Component);
 
-
-ReactDOM.render(React.createElement(App, null), document.getElementById('react')); // end::render[]
+ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
 
 /***/ }),
 
