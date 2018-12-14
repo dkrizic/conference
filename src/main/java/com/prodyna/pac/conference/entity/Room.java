@@ -9,22 +9,50 @@ import org.springframework.hateoas.core.Relation;
 
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @NodeEntity
 public class Room {
 
     @Id
     @GeneratedValue
-    public Long _id;
+    private Long _id;
 
     @Relationship(type="IN_LOCATION")
-    public Location location;
+    private Location location;
 
     public String name;
 
     @Relationship(type="IN_ROOM",direction = Relationship.INCOMING)
-    public Set<Slot> slots;
+    private Set<Slot> slots;
 
+    public Long get_id() {
+        return _id;
+    }
+
+    public void set_id(Long _id) {
+        this._id = _id;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Slot> getSlots() {
+        return slots;
+    }
+
+    public void setSlots(Set<Slot> slots) {
+        this.slots = slots;
+    }
 }

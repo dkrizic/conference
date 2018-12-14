@@ -5,26 +5,51 @@ import org.neo4j.ogm.annotation.*;
 
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @NodeEntity
 public class Person {
 
     @Id
     @GeneratedValue
-    public Long _id;
+    private Long _id;
 
-    public String id;
+    private String id;
 
     @Index(unique = true)
-    public String name;
+    private String name;
 
     @Relationship(type="BY_PERSON", direction=Relationship.INCOMING)
-    public Set<Talk> talks;
+    private Set<Talk> talks;
 
     public String getId() {
         return id;
+    }
+
+    public Long get_id() {
+        return _id;
+    }
+
+    public void set_id(Long _id) {
+        this._id = _id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Talk> getTalks() {
+        return talks;
+    }
+
+    public void setTalks(Set<Talk> talks) {
+        this.talks = talks;
     }
 
 }

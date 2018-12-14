@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 import java.util.Set;
 
-@Projection(types={Person.class})
+@Projection(name="detail",types={Person.class})
 public interface PersonDescription {
 
     String getName();

@@ -16,14 +16,45 @@ public class Talk {
 
     @Id
     @GeneratedValue
-    public Long _id;
+    private Long _id;
 
     @Relationship(type = "BY_PERSON")
-    public Set<Person> persons;
+    private Set<Person> persons;
 
     @Relationship(type = "IN_SLOT")
-    public Set<Slot> slots;
+    private Set<Slot> slots;
 
     public String title;
 
+    public Long get_id() {
+        return _id;
+    }
+
+    public void set_id(Long _id) {
+        this._id = _id;
+    }
+
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }
+
+    public Set<Slot> getSlots() {
+        return slots;
+    }
+
+    public void setSlots(Set<Slot> slots) {
+        this.slots = slots;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 import java.util.Set;
 
-@Projection(types={Talk.class})
+@Projection(name="detail",types={Talk.class})
 public interface TalkDescription {
 
     String getTitle();

@@ -6,7 +6,7 @@ import com.prodyna.pac.conference.entity.Slot;
 import com.prodyna.pac.conference.entity.Talk;
 import org.springframework.data.rest.core.config.Projection;
 
-@Projection(types={Slot.class})
+@Projection(name="detail",types={Slot.class})
 public interface SlotDescription {
 
     String getDatetime();

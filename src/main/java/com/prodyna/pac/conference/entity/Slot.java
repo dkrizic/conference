@@ -11,25 +11,61 @@ import org.springframework.hateoas.core.Relation;
 
 import java.util.Date;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @NodeEntity
 public class Slot {
 
     @Id
     @GeneratedValue
-    public Long _id;
+    private Long _id;
 
     @Relationship(type = "ON_EVENT")
-    public Event event;
+    private Event event;
 
     @Relationship(type = "IN_ROOM")
-    public Room room;
+    private Room room;
 
     @Relationship(type="IN_SLOT", direction = Relationship.INCOMING)
-    public Talk talk;
+    private Talk talk;
 
-    public String datetime;
+    private String datetime;
 
+    public Long get_id() {
+        return _id;
+    }
+
+    public void set_id(Long _id) {
+        this._id = _id;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Talk getTalk() {
+        return talk;
+    }
+
+    public void setTalk(Talk talk) {
+        this.talk = talk;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
 }
