@@ -9,8 +9,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 @NodeEntity
 public class Location {
 

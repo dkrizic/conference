@@ -8,8 +8,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 @NodeEntity
 public class Person {
 
@@ -28,4 +26,5 @@ public class Person {
     public String getId() {
         return id;
     }
+
 }

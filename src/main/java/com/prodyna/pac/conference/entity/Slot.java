@@ -14,8 +14,6 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 @NodeEntity
 public class Slot {
 

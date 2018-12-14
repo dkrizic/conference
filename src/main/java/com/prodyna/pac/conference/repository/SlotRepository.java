@@ -9,7 +9,7 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RepositoryRestResource(path="/slots",excerptProjection = SlotDescription.class)
+@RepositoryRestResource(path="/slots")
 public interface SlotRepository extends Neo4jRepository<Slot,Long> {
     // ok
 }

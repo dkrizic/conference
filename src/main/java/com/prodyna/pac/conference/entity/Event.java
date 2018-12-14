@@ -14,17 +14,15 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 @NodeEntity
 public class Event {
 
     @Id
     @GeneratedValue
-    public Long _id;
+    private Long _id;
 
     @Relationship(type="IN_LOCATION")
-    public Location location;
+    private Location location;
 
     public String name;
 
@@ -35,4 +33,11 @@ public class Event {
     @Relationship(type="ON_EVENT",direction=Relationship.INCOMING)
     public Set<Slot> slots;
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
