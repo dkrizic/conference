@@ -103,7 +103,7 @@ Now exec into the running neo4j container
 
 and run the following commands:
 
-    # /var/lib/neo4j/import/import/merge.cypher | cypher-shell
+    # cat /var/lib/neo4j/import/import/merge.cypher | cypher-shell
     
 We can now verify by running:
 
@@ -117,6 +117,10 @@ Install Grafana and Prometheus
 
     $ helm install --name prometheus --namespace monitoring -f prometheus/minikube.yaml stable/prometheus
     $ helm install --name grafana --namespace monitoring -f grafana/minikube.yaml stable/grafana
+    
+In order to configure Prometheus and have a default dashboard we need to add two things:
+
+    $ kubectl -n monitoring create -f grafana/addons
 
 Wait for all pods being up and activate port forward to prometheus
 
