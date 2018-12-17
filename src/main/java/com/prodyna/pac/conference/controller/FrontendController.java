@@ -77,9 +77,17 @@ public class FrontendController {
         }
 
         model.put("slots", slotModels );
-        System.out.println( slotModels );
 
         return "event";
+    }
+
+    @GetMapping("/frontend/talks/{talkId}")
+    public String talk( Map<String,Object> model, @PathVariable Long talkId ) {
+
+        Talk talk = talkRepository.findById( talkId ).get();
+        model.put( "talk", talk );
+        return "talk";
+
     }
 
 

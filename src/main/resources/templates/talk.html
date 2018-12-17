@@ -30,31 +30,7 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1 th:text="${event.name}">Event name</h1>
-        <p th:text="${location.name}">Location name</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th:block th:each="room : ${rooms}">
-                        <th th:text="${room.name}">Room name</th>
-                    </th:block>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="slot : ${slots}">
-                    <td th:text="${slot.datetime}">12:00</td>
-                    <th:block th:each="roomModel : ${slot.roomModels}">
-                        <td>
-                            <th:if="${roomModel.talk != null}">
-                                <a th:href="@{'/frontend/talks/' + ${roomModel.talk?._id}}" th:text="${roomModel.talk?.title}">Talk title</a>
-                            </th:if>
-                        </td>
-                    </th:block>
-                </tr>
-            </tbody>
-        </table>
+        <h1 th:text="${talk.title}">Event name</h1>
 
     </div>
 
