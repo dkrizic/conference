@@ -42,6 +42,7 @@ public class FrontendController {
     @GetMapping("/frontend/events")
     public String events(Map<String,Object> model ) {
         Iterable<Event> events = eventRepository.findAll();
+        model.put("title", "Events");
         model.put("events", events );
         return "events";
     }
@@ -50,6 +51,7 @@ public class FrontendController {
     public String event(Map<String,Object> model, @PathVariable Long eventId ) {
 
         Event event = eventRepository.findById( eventId ).get();
+        model.put("title", event.getName() );
         model.put("event", event );
 
         Location location = locationRepository.findByEventId( eventId );
@@ -85,6 +87,7 @@ public class FrontendController {
     public String talk( Map<String,Object> model, @PathVariable Long talkId ) {
 
         Talk talk = talkRepository.findById( talkId ).get();
+        model.put( "title", talk.getTitle() );
         model.put( "talk", talk );
         return "talk";
 
