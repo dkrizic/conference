@@ -20,4 +20,6 @@ public interface TalkRepository extends Neo4jRepository<Talk,Long> {
     @Query("match (t:Talk)--(s:Slot)--(e:Event) where id(t) = {talkId} return e")
     Page<Event> findEventsForTalk(@Param("talkId") int talkId, Pageable p );
 
+    @Query("match (e:Event)--(s:Slot)--(t:Talk) where id(e) = {eventId} and id(s) = {slotId} return t")
+    Talk findByEventAndSlot(@Param("eventId") Long eventId, @Param("slotId") Long slotId);
 }

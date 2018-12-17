@@ -12,6 +12,7 @@ import org.springframework.hateoas.core.Relation;
 import java.util.Date;
 
 @NodeEntity
+@Data
 public class Slot {
 
     @Id
@@ -29,43 +30,4 @@ public class Slot {
 
     private String datetime;
 
-    public Long get_id() {
-        return _id;
-    }
-
-    public void set_id(Long _id) {
-        this._id = _id;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public Talk getTalk() {
-        return talk;
-    }
-
-    public void setTalk(Talk talk) {
-        this.talk = talk;
-    }
-
-    public String getDatetime() {
-        return datetime;
-    }
-
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
-    }
 }

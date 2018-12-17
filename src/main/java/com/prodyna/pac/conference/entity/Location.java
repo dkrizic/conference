@@ -7,6 +7,9 @@ import org.springframework.hateoas.core.Relation;
 import java.util.Set;
 
 @NodeEntity
+@Getter
+@Setter
+@ToString(exclude = {"events"})
 public class Location {
 
     @Id
@@ -22,35 +25,4 @@ public class Location {
     @Relationship(type="IN_LOCATION", direction = Relationship.INCOMING)
     private Set<Event> events;
 
-    public Long get_id() {
-        return _id;
-    }
-
-    public void set_id(Long _id) {
-        this._id = _id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(Set<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
 }
