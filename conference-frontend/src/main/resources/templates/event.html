@@ -26,7 +26,7 @@
                     <th:block th:each="roomModel : ${slot.roomModels}">
                         <td>
                             <th:if="${roomModel.talk != null}">
-                                <a th:href="@{'/frontend/talks/' + ${roomModel.talk?._id}}" th:text="${roomModel.talk?.title}">Talk title</a>
+                                <a th:href="@{'/talks/' + ${roomModel.talk?._id}}" th:text="${roomModel.talk?.title}">Talk title</a>
                             </th:if>
                         </td>
                     </th:block>

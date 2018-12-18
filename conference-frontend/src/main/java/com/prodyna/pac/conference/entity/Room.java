@@ -1,23 +1,29 @@
 package com.prodyna.pac.conference.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
+import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import uk.co.blackpepper.bowman.annotation.ResourceId;
 
 import java.net.URI;
 import java.util.Set;
 
 @Data
-@ToString(exclude={"location","slots"})
+@RemoteResource("/api/rooms")
 public class Room {
 
     private URI _id;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Location location;
 
     public String name;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Slot> slots;
 
     @ResourceId
@@ -29,4 +35,5 @@ public class Room {
     public Set<Slot> getSlots() {
         return slots;
     }
+
 }

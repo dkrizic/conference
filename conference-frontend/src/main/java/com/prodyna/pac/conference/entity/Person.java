@@ -1,15 +1,17 @@
 package com.prodyna.pac.conference.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
+import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import uk.co.blackpepper.bowman.annotation.ResourceId;
 
 import java.net.URI;
 import java.util.Set;
 
 @Data
-@ToString(exclude={"talks"})
+@RemoteResource("/api/persons")
 public class Person {
 
     private URI _id;
@@ -18,6 +20,8 @@ public class Person {
 
     private String name;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Talk> talks;
 
     @ResourceId

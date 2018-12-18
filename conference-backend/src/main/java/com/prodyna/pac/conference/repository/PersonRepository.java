@@ -22,8 +22,10 @@ public interface PersonRepository extends Neo4jRepository<Person,Long> {
     @Query("match (p:Person) where p.id = {id} return p")
     Person findByOwnId( @Param("id") String id );
 
+    @RestResource
     Page<Person> findAll( Pageable p );
 
+    @RestResource
     Page<Person> findByName(@Param("name") String name, Pageable p );
 
 }

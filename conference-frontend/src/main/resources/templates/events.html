@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <tr th:each="event : ${events}">
-                    <td><a th:href="@{'/frontend/events/' + ${event._id}}" th:text="${event.name}">Event name</a></td>
+                    <td><a th:href="@{'/events/' + ${event.numericId}}" th:text="${event.name}">Event name</a></td>
                     <td th:text="${event.location.name}">Event location</td>
                     <td th:text="${event.startDate}">Start date</td>
                     <td th:text="${event.endDate}">End date</td>

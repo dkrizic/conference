@@ -1,14 +1,12 @@
 package com.prodyna.pac.conference.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import uk.co.blackpepper.bowman.annotation.ResourceId;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Set;
 
 @Data
@@ -18,6 +16,7 @@ public class Event {
     private URI _id;
 
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Location location;
 
     private String name;
@@ -27,6 +26,7 @@ public class Event {
     private String endDate;
 
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Slot> slots;
 
     @ResourceId
@@ -46,6 +46,12 @@ public class Event {
     @LinkedResource
     public Location getLocation() {
         return location;
+    }
+
+    public long getNumericId() {
+        String[] parts = get_id().getPath().toString().split("/");
+        String numeric = parts[ parts.length - 1];
+        return Long.parseLong( numeric );
     }
 
 }
