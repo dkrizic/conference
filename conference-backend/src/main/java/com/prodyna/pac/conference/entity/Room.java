@@ -11,7 +11,6 @@ import java.util.Set;
 
 @NodeEntity
 @Data
-@ToString(exclude={"location","slots"})
 public class Room {
 
     @Id
@@ -19,10 +18,14 @@ public class Room {
     private Long _id;
 
     @Relationship(type="IN_LOCATION")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Location location;
 
     private String name;
 
     @Relationship(type="IN_ROOM",direction = Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Slot> slots;
 }

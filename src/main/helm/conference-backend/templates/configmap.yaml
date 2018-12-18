@@ -12,3 +12,6 @@ data:
       data:
         neo4j:
           uri: {{ .Values.neo4j.uri }}
+    conference:
+      backend:
+        url: http://conference-backend

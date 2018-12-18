@@ -29,4 +29,6 @@ management:
         auto-time-requests: true
   security:
     enabled: false
-
+conference:
+  backend:
+    url: http://conference.192.168.99.100.nip.io

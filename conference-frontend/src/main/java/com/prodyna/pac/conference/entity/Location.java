@@ -1,9 +1,12 @@
 package com.prodyna.pac.conference.entity;
 
-import lombok.*;
-import org.neo4j.ogm.annotation.*;
-import org.springframework.hateoas.core.Relation;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import uk.co.blackpepper.bowman.annotation.LinkedResource;
+import uk.co.blackpepper.bowman.annotation.ResourceId;
 
+import java.net.URI;
 import java.util.Set;
 
 @Getter
@@ -11,7 +14,7 @@ import java.util.Set;
 @ToString(exclude = {"events"})
 public class Location {
 
-    private Long _id;
+    private URI _id;
 
     private String name;
 
@@ -19,4 +22,18 @@ public class Location {
 
     private Set<Event> events;
 
+    @ResourceId
+    public URI get_id() {
+        return _id;
+    }
+
+    @LinkedResource
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    @LinkedResource
+    public Set<Event> getEvents() {
+        return events;
+    }
 }

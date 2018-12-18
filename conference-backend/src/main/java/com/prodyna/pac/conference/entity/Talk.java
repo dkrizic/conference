@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Data
 @NodeEntity
-@ToString(exclude={"persons","slots"})
 public class Talk {
 
     @Id
@@ -18,9 +17,13 @@ public class Talk {
     private Long _id;
 
     @Relationship(type = "BY_PERSON")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Person> persons;
 
     @Relationship(type = "IN_SLOT")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Slot> slots;
 
     public String title;

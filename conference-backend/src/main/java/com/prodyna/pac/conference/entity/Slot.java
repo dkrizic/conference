@@ -20,12 +20,18 @@ public class Slot {
     private Long _id;
 
     @Relationship(type = "ON_EVENT")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Event event;
 
     @Relationship(type = "IN_ROOM")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Room room;
 
     @Relationship(type="IN_SLOT", direction = Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Talk talk;
 
     private String datetime;

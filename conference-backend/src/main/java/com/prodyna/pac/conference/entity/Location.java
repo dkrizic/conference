@@ -7,9 +7,7 @@ import org.springframework.hateoas.core.Relation;
 import java.util.Set;
 
 @NodeEntity
-@Getter
-@Setter
-@ToString(exclude = {"events"})
+@Data
 public class Location {
 
     @Id
@@ -20,9 +18,13 @@ public class Location {
     private String name;
 
     @Relationship(type="IN_LOCATION", direction=Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Room> rooms;
 
     @Relationship(type="IN_LOCATION", direction = Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Event> events;
 
 }

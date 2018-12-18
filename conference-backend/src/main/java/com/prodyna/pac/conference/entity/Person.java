@@ -7,7 +7,6 @@ import java.util.Set;
 
 @NodeEntity
 @Data
-@ToString(exclude={"talks"})
 public class Person {
 
     @Id
@@ -20,6 +19,8 @@ public class Person {
     private String name;
 
     @Relationship(type="BY_PERSON", direction=Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Talk> talks;
 
 }

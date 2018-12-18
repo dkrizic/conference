@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:include="fragments/header :: header"/>
+<body>
+
+<nav th:replace="fragments/navigation :: navigation"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1 th:text="${title}">Events</h1>
+        <p th:text="${message}">Message</p>
+    </div>
+
+<div lang="en" th:include="fragments/footer :: footer"/>
+
+</body>
+</html>
