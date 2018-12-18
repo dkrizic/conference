@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: conference-frontend
+  servlet:
+    multipart:
+      enabled: true
+      location: /tmp
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+      reload:
+        enabled: false
+      config:
+        enabled: true
+management:
+  endpoint:
+    metrics.enabled: true
+    prometheus.enabled: true
+  endpoints:
+    web:
+      exposure.include: info,health,metrics,prometheus
+  metrics:
+    export.prometheus.enabled: true
+    web:
+      server:
+        auto-time-requests: true
+  security:
+    enabled: false
+

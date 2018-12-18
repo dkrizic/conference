@@ -1,0 +1,37 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: conference-backend
+  servlet:
+    multipart:
+      enabled: true
+      location: /tmp
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+      reload:
+        enabled: false
+      config:
+        enabled: true
+  data:
+    neo4j:
+      uri: bolt://minikube:32001
+    rest:
+      basePath: /api
+management:
+  endpoint:
+    metrics.enabled: true
+    prometheus.enabled: true
+  endpoints:
+    web:
+      exposure.include: info,health,metrics,prometheus
+  metrics:
+    export.prometheus.enabled: true
+    web:
+      server:
+        auto-time-requests: true
+  security:
+    enabled: false
+

@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "conference.name" . }}
+  labels:
+    component: {{ include "conference.name" . }}
+rules:
+- apiGroups: [""] 
+  resources: ["configmaps","secrets"]
+  resourceNames: ["{{ include "conference.name" . }}"]
+  verbs: ["get","watch","list"]
+- apiGroups: [""] 
+  resources: ["pods","services"]
+  verbs: ["get","watch","list"]
