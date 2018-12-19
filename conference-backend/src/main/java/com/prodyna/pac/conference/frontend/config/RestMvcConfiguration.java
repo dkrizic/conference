@@ -19,8 +19,8 @@ public class RestMvcConfiguration {
             public void configureRepositoryRestConfiguration( RepositoryRestConfiguration config ) {
                 config
                         .setBasePath("/api")
-                        .withEntityLookup()
-                        .forRepository( PersonRepository.class, Person::getId, PersonRepository::findByOwnId );
+                        /*.withEntityLookup()
+                        .forRepository( PersonRepository.class, Person::getId, PersonRepository::findByOwnId )*/;
 
             }
         };

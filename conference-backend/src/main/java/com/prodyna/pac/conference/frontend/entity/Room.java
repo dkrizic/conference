@@ -8,8 +8,8 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.Set;
 
-@NodeEntity
 @Data
+@NodeEntity
 public class Room {
 
     @Id

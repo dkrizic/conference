@@ -5,13 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
-import uk.co.blackpepper.bowman.annotation.ResourceId;
-
-import java.net.URI;
 
 @Data
 @RemoteResource("/api/slots")
-public class Slot extends AbstractEntity {
+public class Slot extends NumericEntity {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

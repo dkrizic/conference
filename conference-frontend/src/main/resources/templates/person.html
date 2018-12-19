@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:include="fragments/header :: header"/>
+<body>
+
+<nav th:replace="fragments/navigation :: navigation"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1 th:text="${title}">Talk title</h1>
+        <h2>Talks</h2>
+        <ul th:each="talk : ${person.talks}">
+            <li><a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk name</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<div lang="en" th:include="fragments/footer :: footer"></div>
+
+</body>
+</html>

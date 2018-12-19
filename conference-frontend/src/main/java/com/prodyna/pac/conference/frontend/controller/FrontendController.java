@@ -42,6 +42,9 @@ public class FrontendController {
     private Client<SlotSearch> slotSearchClient;
 
     @Autowired
+    private Client<Person> personClient;
+
+    @Autowired
     private URIConverter uriConverter;
 
     @GetMapping("/test")
@@ -115,7 +118,15 @@ public class FrontendController {
         model.put( "title", talk.getTitle() );
         model.put( "talk", talk );
         return "talk";
+    }
 
+    @GetMapping("/persons/{personId}")
+    public String person( Map<String,Object> model, @PathVariable long personId ) {
+        URI uri = uriConverter.convertToURI( Person.class, personId );
+        Person person = personClient.get( uri );
+        model.put( "title", person.getName() );
+        model.put( "person", person );
+        return "person";
     }
 
 }

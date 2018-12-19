@@ -5,8 +5,8 @@ import org.neo4j.ogm.annotation.*;
 
 import java.util.Set;
 
-@NodeEntity
 @Data
+@NodeEntity
 public class Location {
 
     @Id

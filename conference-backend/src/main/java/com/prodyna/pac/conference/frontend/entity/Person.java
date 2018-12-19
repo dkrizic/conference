@@ -5,8 +5,8 @@ import org.neo4j.ogm.annotation.*;
 
 import java.util.Set;
 
-@NodeEntity
 @Data
+@NodeEntity
 public class Person {
 
     @Id
@@ -18,7 +18,7 @@ public class Person {
     @Index(unique = true)
     private String name;
 
-    @Relationship(type="BY_PERSON", direction=Relationship.INCOMING)
+    @Relationship(type="BY_PERSON",direction=Relationship.INCOMING)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Talk> talks;

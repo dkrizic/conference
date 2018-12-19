@@ -3,14 +3,12 @@ package com.prodyna.pac.conference.frontend.entity;
 import lombok.*;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
-import uk.co.blackpepper.bowman.annotation.ResourceId;
 
-import java.net.URI;
 import java.util.Set;
 
 @Data
 @RemoteResource("/api/events")
-public class Event extends AbstractEntity {
+public class Event extends NumericEntity {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

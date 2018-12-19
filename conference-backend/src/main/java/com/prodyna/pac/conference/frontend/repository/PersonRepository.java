@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
 public interface PersonRepository extends Neo4jRepository<Person,Long> {
     // using default
 
-    @RestResource(exported = false)
-    @Query("match (p:Person) where p.id = {id} return p")
+    @RestResource(exported = true)
+    @Query("match (p:Person {id:{id}}) return p")
     Person findByOwnId( @Param("id") String id );
 
     @RestResource

@@ -18,7 +18,7 @@ public class URIConverter {
     @Autowired
     private BackendAddress backendURL;
 
-    public URI convertToURI( Class clazz, long id ) {
+    public URI convertToURI( Class clazz, Object id ) {
         log.debug("Creating uri for type {}, id {}", clazz, id );
         String relative;
         try {

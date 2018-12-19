@@ -7,7 +7,7 @@ import uk.co.blackpepper.bowman.annotation.ResourceId;
 import java.net.URI;
 
 @Data
-public abstract class AbstractEntity {
+public abstract class NumericEntity {
 
     private URI _id;
 

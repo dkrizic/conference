@@ -1,0 +1,10 @@
+id,name,parents
+database,Database
+neo4j,Neo4j,database
+java,Java
+spring,Spring,java
+spring-boot,Spring Boot,spring
+seng,Software Engineering
+agile,Agile Software Engineering,seng
+lombok,Lombok,java;spring
+kubernetes,Kubernetes

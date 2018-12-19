@@ -5,14 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
-import uk.co.blackpepper.bowman.annotation.ResourceId;
 
-import java.net.URI;
 import java.util.Set;
 
 @Data
 @RemoteResource("/api/persons")
-public class Person extends AbstractEntity {
+public class Person extends NumericEntity {
 
     private String id;
 

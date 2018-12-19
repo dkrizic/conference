@@ -34,6 +34,11 @@ public class EntityClientFactory {
     }
 
     @Bean
+    public Client<Person> createPersonClient() {
+        return clientFactory.create( Person.class );
+    }
+
+    @Bean
     public Client<RoomSearch> createRoomSearchClient() {
         return clientFactory.create( RoomSearch.class );
     }
