@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: dkrizic/conference
+  repository: dkrizic/conference-data
   tag: latest
   pullPolicy: IfNotPresent
 

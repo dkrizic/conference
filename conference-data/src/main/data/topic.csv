@@ -1,0 +1,24 @@
+id,name,parents
+it,IT,
+seng,Software Engineering,it
+persistence,Persistence Technologies,it
+database,Database technologies,persistence
+nosql,NoSQL databases,database
+graphdb,Graph Databases,nosql
+neo4j,Neo4j,graphdb
+java,Java,it
+spring,Spring,java
+spring-boot,Spring Boot,spring
+spring-data-neo4j,Spring Data Neo4j,spring-boot;neo4j
+spring-data-rest,Spring Data REST,spring-boot;rest
+agile,Agile Software Engineering,seng
+scrum,SCRUM,agile
+lombok,Lombok,java;spring
+orchestration,Orchestration,operations
+kubernetes,Kubernetes,orchestration;cloud
+cloud,Cloud,it
+operations,Operations,it
+communication,Communications,it
+protocol,Communication protocols,communication
+rest,REST,protocol
+devops,DevOps,seng;operations

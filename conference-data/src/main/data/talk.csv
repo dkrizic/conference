@@ -1,5 +1,5 @@
 id,slots,persons,title,language,topics
 sb,1;100,dkrizic;tbock,Microservices with Spring Boot,en,spring-boot;kubernetes;docker
 vel,2;101,skirch;tbock,Team velicity in Scrum,en,scrum
-lom,3,102,tbock,Hassle with Lombock,en,lombok
-lom2,4,103,tbock,Die Qualen mit Lombock,de,lombok
+lom,3;102,tbock,Hassle with Lombock,en,lombok
+lom2,4;103,tbock,Die Qualen mit Lombock,de,lombok

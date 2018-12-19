@@ -1,6 +1,8 @@
 package com.prodyna.pac.conference.frontend.entity;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -10,32 +12,28 @@ import java.util.Set;
 
 @Data
 @NodeEntity
-public class Talk {
+public class Topic {
 
     @Id
     @GeneratedValue
     private Long _id;
 
-    @Relationship(type = "BY_PERSON")
+    private String id;
+
+    private String name;
+
+    @Relationship(type="IS_ABOUT", direction = Relationship.INCOMING)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Person> persons;
+    private Set<Talk> talks;
 
-    @Relationship(type = "IN_SLOT")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Slot> slots;
+    @Relationship(type="PART_OF", direction = Relationship.OUTGOING)
+    private Set<Topic> parents;
 
-    @Relationship(type="IS_ABOUT")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Topic> topics;
-
-    private String title;
-
-    @Relationship(type="IN_LANGUAGE")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private Language language;
-
+    @Relationship(type="PART_OF", direction = Relationship.INCOMING)
+    private Set<Topic> children;
 }

@@ -5,10 +5,5 @@ metadata:
   labels:
     app: {{ include "conference.name" . }}
 data:
-  application.yaml: |-
-    server:
-      port: 80
-    spring:
-      data:
-        neo4j:
-          uri: {{ .Values.neo4j.uri }}
+  configuration.properties: |-
+    neo4j.uri: {{ .Values.neo4j.uri }}

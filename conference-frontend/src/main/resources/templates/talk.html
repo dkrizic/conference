@@ -9,15 +9,25 @@
 
     <div class="starter-template">
         <h1 th:text="${title}">Talk title</h1>
+
         <h2>Persons</h2>
         <ul th:each="person : ${talk.getPersons()}">
             <li><a th:href="@{'/persons/' + ${person.numericId()}}" th:text="${person.name}"/></li>
         </ul>
+
         <h2>Events</h2>
         <ul th:each="slot : ${talk.getSlots()}">
             <li>
                 <a th:href="@{'/events/' + ${slot.event.numericId()}}" th:text="${slot.event.name} + ' @ ' + ${slot.datetime}"/>
             </li>
+        </ul>
+
+        <h2>Language</h2>
+        <p th:text="${talk.language.name}">Language</p>
+
+        <h2>Topics</h2>
+        <ul th:each="topic : ${talk.topics}">
+            <li th:text="${topic.name}">Topic</li>
         </ul>
     </div>
 

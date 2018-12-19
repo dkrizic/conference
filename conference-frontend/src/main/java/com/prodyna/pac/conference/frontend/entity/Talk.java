@@ -12,6 +12,8 @@ import java.util.Set;
 @RemoteResource("/api/talks")
 public class Talk extends NumericEntity {
 
+    private String title;
+
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Person> persons;
@@ -20,7 +22,13 @@ public class Talk extends NumericEntity {
     @EqualsAndHashCode.Exclude
     private Set<Slot> slots;
 
-    public String title;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Language language;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Topic> topics;
 
     @LinkedResource
     public Set<Person> getPersons() {
@@ -30,5 +38,15 @@ public class Talk extends NumericEntity {
     @LinkedResource
     public Set<Slot> getSlots() {
         return slots;
+    }
+
+    @LinkedResource
+    public Language getLanguage() {
+        return language;
+    }
+
+    @LinkedResource
+    public Set<Topic> getTopics() {
+        return topics;
     }
 }

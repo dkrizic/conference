@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "match (n) return n;" | cypher-shell
