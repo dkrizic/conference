@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.frontend.controller;
 
+import com.prodyna.pac.conference.frontend.converter.URIConverter;
 import com.prodyna.pac.conference.frontend.entity.*;
 import com.prodyna.pac.conference.frontend.model.SlotModel;
 import lombok.extern.slf4j.Slf4j;
@@ -21,9 +22,6 @@ import java.util.Set;
 @Slf4j
 public class FrontendController {
 
-    @Value("${conference.backend.url}")
-    private String backendUrl;
-
     @Autowired
     private Client<Event> eventClient;
 
@@ -35,6 +33,9 @@ public class FrontendController {
 
     @Autowired
     private Client<Talk> talkClient;
+
+    @Autowired
+    private URIConverter uriConverter;
 
     @GetMapping("/test")
     public String test( Map<String,Object> model ) {
@@ -58,15 +59,8 @@ public class FrontendController {
     @GetMapping("/events/{eventId}")
     public String event(Map<String,Object> model, @PathVariable Long eventId ) {
 
-        // TODO: Get real event
-        Event event;
-        try {
-            String url = backendUrl + "/api/events/" + eventId;
-            System.out.println("url=" + url );
-            event = eventClient.get(new URI( url ));
-        } catch ( Exception e ) {
-            throw new RuntimeException( e );
-        }
+        URI uri = uriConverter.convertToURI( Event.class, eventId );
+        Event event = eventClient.get( uri );
         model.put("event", event );
 
         // Get location
@@ -110,12 +104,8 @@ public class FrontendController {
 
     @GetMapping("/talks/{talkId}")
     public String talk( Map<String,Object> model, @PathVariable Long talkId ) {
-        Talk talk = null;
-        try {
-            talk = talkClient.get( new URI(backendUrl + "/api/talks/" + talkId ));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException( e );
-        }
+        URI uri = uriConverter.convertToURI( Talk.class, talkId );
+        Talk talk = talkClient.get( uri );
         log.info("Found talk {}", talk);
         model.put( "title", talk.getTitle() );
         model.put( "talk", talk );
