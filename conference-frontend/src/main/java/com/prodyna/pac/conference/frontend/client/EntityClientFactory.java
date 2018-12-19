@@ -1,9 +1,6 @@
 package com.prodyna.pac.conference.frontend.client;
 
-import com.prodyna.pac.conference.frontend.entity.Event;
-import com.prodyna.pac.conference.frontend.entity.Location;
-import com.prodyna.pac.conference.frontend.entity.Room;
-import com.prodyna.pac.conference.frontend.entity.Talk;
+import com.prodyna.pac.conference.frontend.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -35,5 +32,18 @@ public class EntityClientFactory {
     public Client<Talk> createTalkClient() {
         return clientFactory.create( Talk.class );
     }
+
+    @Bean
+    public Client<RoomSearch> createRoomSearchClient() {
+        return clientFactory.create( RoomSearch.class );
+    }
+
+    @Bean
+    public Client<SlotSearch> createSlotSearchClient() {
+        return clientFactory.create( SlotSearch.class );
+    }
+
+    @Bean
+    public Client<TalkSearch> createTalkSearchClient() { return clientFactory.create( TalkSearch.class ); }
 
 }

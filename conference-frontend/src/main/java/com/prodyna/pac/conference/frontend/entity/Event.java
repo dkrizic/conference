@@ -12,7 +12,6 @@ import java.util.Set;
 @RemoteResource("/api/events")
 public class Event extends AbstractEntity {
 
-
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Location location;

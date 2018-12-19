@@ -2,6 +2,7 @@ package com.prodyna.pac.conference.frontend.controller;
 
 import com.prodyna.pac.conference.frontend.converter.URIConverter;
 import com.prodyna.pac.conference.frontend.entity.*;
+import com.prodyna.pac.conference.frontend.model.RoomModel;
 import com.prodyna.pac.conference.frontend.model.SlotModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class FrontendController {
 
     @Autowired
     private Client<Talk> talkClient;
+
+    @Autowired
+    private Client<RoomSearch> roomSearchClient;
+
+    @Autowired
+    private Client<SlotSearch> slotSearchClient;
 
     @Autowired
     private URIConverter uriConverter;
@@ -71,34 +78,32 @@ public class FrontendController {
         Set<Slot> slots = event.getSlots();
         List<String> datetimes = new ArrayList<>();
         for( Slot slot : slots ) {
-            if( datetimes.contains( slot.getDatetime() ) ) {
-                // skip
-            } else {
+            if( ! datetimes.contains( slot.getDatetime() ) ) {
                 datetimes.add( slot.getDatetime());
             }
         }
 
-        // Page<Room> rooms = roomRepository.findRoomsForLocation(location.get_id(), new PageRequest(0,100));
-        model.put("rooms", new ArrayList<Room>() );
+        List<Room> rooms = roomSearchClient.get().findRoomsForLocation( location.numericId() );
+        model.put("rooms", rooms );
 
         List<SlotModel> slotModels = new ArrayList<>();
         for( String datetime : datetimes ) {
             SlotModel slotModel = new SlotModel( datetime );
             slotModels.add( slotModel );
 
-//            for( Room room : rooms ) {
-//                RoomModel roomModel = new RoomModel( room, null );
-//                slotModel.getRoomModels().add( roomModel );
-//                Slot slot = slotRepository.findByDatetimeAndRoom( datetime, room.get_id() );
-//                if( slot != null ) {
-//                    Talk talk = talkRepository.findByEventAndSlot( event.get_id(), slot.get_id() );
-//                    roomModel.setTalk( talk );
-//                }
-//            }
+           for( Room room : rooms ) {
+               RoomModel roomModel = new RoomModel( room, null );
+                slotModel.getRoomModels().add( roomModel );
+                log.info("Searching for slots for datetime {} and room {}", datetime, room.numericId() );
+                Slot slot = slotSearchClient.get().byDatetimeAndRoom( datetime, room.numericId() );
+                log.info("Found slot {}", slot );
+                if( slot != null ) {
+                    roomModel.setTalk( slot.getTalk() );
+                }
+            }
         }
 
         model.put("slots", slotModels );
-
         return "event";
     }
 

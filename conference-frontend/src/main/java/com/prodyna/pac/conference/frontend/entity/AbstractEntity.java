@@ -1,6 +1,7 @@
 package com.prodyna.pac.conference.frontend.entity;
 
 import lombok.Data;
+import lombok.ToString;
 import uk.co.blackpepper.bowman.annotation.ResourceId;
 
 import java.net.URI;
@@ -11,6 +12,7 @@ public abstract class AbstractEntity {
     private URI _id;
 
     @ResourceId
+    @ToString.Include
     public URI get_id() {
         return _id;
     }
