@@ -3,6 +3,7 @@ package com.prodyna.pac.conference.frontend.repository;
 import com.prodyna.pac.conference.frontend.entity.Room;
 import com.prodyna.pac.conference.frontend.entity.Slot;
 import com.prodyna.pac.conference.frontend.entity.Talk;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.neo4j.annotation.Query;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RepositoryRestResource(path="/rooms")
+@Timed
 public interface RoomRepository extends Neo4jRepository<Room,Long> {
 
     @RestResource

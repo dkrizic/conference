@@ -4,6 +4,7 @@ import com.prodyna.pac.conference.frontend.converter.URIConverter;
 import com.prodyna.pac.conference.frontend.entity.*;
 import com.prodyna.pac.conference.frontend.model.RoomModel;
 import com.prodyna.pac.conference.frontend.model.SlotModel;
+import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ import java.util.Set;
 
 @Controller
 @Slf4j
+@Timed
 public class FrontendController {
 
     @Autowired
@@ -48,6 +50,7 @@ public class FrontendController {
     private URIConverter uriConverter;
 
     @GetMapping("/test")
+    @Timed("conference.frontend.test")
     public String test( Map<String,Object> model ) {
         Iterable<Event> events = eventClient.getAll();
         model.put("title", "Test");
@@ -56,6 +59,7 @@ public class FrontendController {
     }
 
     @GetMapping("/events")
+    @Timed("conference.frontend.events")
     public String events(Map<String,Object> model ) {
         Iterable<Event> events = eventClient.getAll();
         for( Event event : events ) {
@@ -67,6 +71,7 @@ public class FrontendController {
     }
 
     @GetMapping("/events/{eventId}")
+    @Timed("conference.frontend.event")
     public String event(Map<String,Object> model, @PathVariable Long eventId ) {
 
         URI uri = uriConverter.convertToURI( Event.class, eventId );
@@ -111,6 +116,7 @@ public class FrontendController {
     }
 
     @GetMapping("/talks/{talkId}")
+    @Timed("conference.frontend.talk")
     public String talk( Map<String,Object> model, @PathVariable Long talkId ) {
         URI uri = uriConverter.convertToURI( Talk.class, talkId );
         Talk talk = talkClient.get( uri );
@@ -120,6 +126,7 @@ public class FrontendController {
         return "talk";
     }
 
+    @Timed("conference.frontend.person")
     @GetMapping("/persons/{personId}")
     public String person( Map<String,Object> model, @PathVariable long personId ) {
         URI uri = uriConverter.convertToURI( Person.class, personId );
