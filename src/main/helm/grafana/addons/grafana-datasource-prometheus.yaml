@@ -18,4 +18,4 @@ data:
       orgId: 1
       url: http://prometheus-server
       isDefault: true
-      editable: false
+      editable: true

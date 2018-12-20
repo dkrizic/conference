@@ -24,7 +24,6 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 1,
       "links": [],
       "panels": [
         {
@@ -32,7 +31,6 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
           "fill": 1,
           "gridPos": {
             "h": 9,
@@ -92,15 +90,23 @@ data:
               "refId": "D"
             },
             {
-              "expr": "avg(container_memory_usage_bytes{container_name=\"demo\"})",
+              "expr": "avg(container_memory_usage_bytes{container_name=\"conference-backend\"})",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "Demo",
+              "legendFormat": "Conference Backend",
               "refId": "E"
+            },
+            {
+              "expr": "avg(container_memory_usage_bytes{container_name=\"conference-frontend\"})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Conference Frontend",
+              "refId": "F"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Memory",
           "tooltip": {
@@ -144,7 +150,6 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
           "fill": 1,
           "gridPos": {
             "h": 9,
@@ -205,15 +210,23 @@ data:
               "refId": "D"
             },
             {
-              "expr": "avg(rate(container_cpu_system_seconds_total{container_name=\"demo\"}[2m]))",
+              "expr": "avg(rate(container_cpu_system_seconds_total{container_name=\"conference-backend\"}[2m]))",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "Demo",
+              "legendFormat": "Conference Backend",
               "refId": "E"
+            },
+            {
+              "expr": "avg(rate(container_cpu_system_seconds_total{container_name=\"conference-frontend\"}[2m]))",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Conferene Frontend",
+              "refId": "F"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "CPU",
           "tooltip": {
@@ -231,7 +244,7 @@ data:
           },
           "yaxes": [
             {
-              "format": "bytes",
+              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -257,7 +270,6 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
           "fill": 1,
           "gridPos": {
             "h": 9,
@@ -289,11 +301,18 @@ data:
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(nginx_ingress_controller_response_duration_seconds_sum{ingress=\"demo\"}) / sum(nginx_ingress_controller_response_duration_seconds_count{ingress=\"demo\"})",
+              "expr": "sum(nginx_ingress_controller_response_duration_seconds_sum{ingress=\"conference-backend\"}) / sum(nginx_ingress_controller_response_duration_seconds_count{ingress=\"conference-backend\"})",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "Nginx",
+              "legendFormat": "Conference Backend",
               "refId": "A"
+            },
+            {
+              "expr": "sum(nginx_ingress_controller_response_duration_seconds_sum{ingress=\"conference-frontend\"}) / sum(nginx_ingress_controller_response_duration_seconds_count{ingress=\"conference-frontend\"})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Conference Frontend",
+              "refId": "C"
             },
             {
               "expr": "sum(persons_findall_seconds_sum) / sum(persons_findall_seconds_count)",
@@ -304,6 +323,7 @@ data:
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Request time",
           "tooltip": {
@@ -321,7 +341,7 @@ data:
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "s",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -341,6 +361,85 @@ data:
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "#299c46",
+            "rgba(237, 129, 40, 0.89)",
+            "#d44a3a"
+          ],
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 12,
+            "y": 9
+          },
+          "id": 10,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "nginx_ingress_controller_nginx_process_requests_total",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "refId": "A"
+            }
+          ],
+          "thresholds": "",
+          "title": "Panel Title",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
         }
       ],
       "schemaVersion": 16,
@@ -353,7 +452,7 @@ data:
         "list": []
       },
       "time": {
-        "from": "now-6h",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {
