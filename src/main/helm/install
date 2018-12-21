@@ -1,0 +1,12 @@
+#!/bin/bash
+helm init --wait
+helm install --name neo4j --namespace persistence -f neo4j/minikube.yaml stable/neo4j
+helm install --name prometheus --namespace monitoring -f prometheus/minikube.yaml stable/prometheus
+kubectl -n monitoring create -f grafana/addons/grafana-datasource-prometheus.yaml
+kubectl -n monitoring create -f grafana/addons/grafana-dashboard-conference.yaml
+helm install --name grafana --namespace monitoring -f grafana/minikube.yaml stable/grafana
+helm install --name conference-backend --namespace conference -f conference-backend/minikube.yaml conference-backend
+helm install --name conference-frontend --namespace conference -f conference-frontend/minikube.yaml conference-frontend
+helm install --name conference-data --namespace conference conference-data
+echo "Grafana password"
+kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo

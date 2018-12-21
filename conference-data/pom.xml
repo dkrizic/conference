@@ -34,20 +34,22 @@
                 <version>${version.dockerfile.maven.plugin}</version>
                 <executions>
                     <execution>
-                        <id>package</id>
+                        <id>build</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>install</id>
+                        <id>push</id>
+                        <phase>install</phase>
                         <goals>
                             <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>dkrizic/conference-data</repository>
+                    <repository>dkrizic/${project.artifactId}</repository>
                     <tag>latest</tag>
                 </configuration>
             </plugin>

@@ -1,30 +1,30 @@
-load csv with headers from "file:/import//person.csv" as line fieldterminator ','
+load csv with headers from "file:/import/person.csv" as line fieldterminator ','
 	merge (p:Person {id:line.id})
 		set p.name = line.name;
 
-load csv with headers from "file:/import//location.csv" as line fieldterminator ','
+load csv with headers from "file:/import/location.csv" as line fieldterminator ','
 	merge (l:Location {id:line.id})
 		set l.name = line.name;
 
-load csv with headers from "file:/import//room.csv" as line fieldterminator ','
+load csv with headers from "file:/import/room.csv" as line fieldterminator ','
 	merge (r:Room {id:line.id})
 		set r.name = line.name,
 		r.location = line.location;
 
-load csv with headers from "file:/import//slot.csv" as line fieldterminator ','
+load csv with headers from "file:/import/slot.csv" as line fieldterminator ','
 	merge (s:Slot {id:line.id})
 		set s.event = line.event,
  		s.room = line.room,
                 s.datetime = line.datetime;
 
-load csv with headers from "file:/import//event.csv" as line fieldterminator ','
+load csv with headers from "file:/import/event.csv" as line fieldterminator ','
 	merge (e:Event {id:line.id})
 		set e.location = line.location,
                 e.name = line.name,
  		e.startDate = line.startDate,
                 e.endDate = line.endDate;
 
-load csv with headers from "file:/import//talk.csv" as line fieldterminator ','
+load csv with headers from "file:/import/talk.csv" as line fieldterminator ','
 	merge (t:Talk {id:line.id})
 		set t.persons = split(line.persons,";"),
 		t.slots = split(line.slots,";"),

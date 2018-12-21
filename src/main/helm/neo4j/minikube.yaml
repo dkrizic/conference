@@ -12,3 +12,5 @@ core:
     value: "true"
   - name: NEO4J_metrics_prometheus_endpoint
     value: "0.0.0.0:2004"
+  - name: NEO4J_dbms__security__allow_csv_import_from_file_urls
+    value: "true"

@@ -1,5 +1,5 @@
 apiVersion: apps/v1beta2
-kind: Job
+kind: Deployment
 metadata:
   name: {{ include "conference.fullname" . }}
   labels:
@@ -30,14 +30,6 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

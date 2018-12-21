@@ -1,2 +1,15 @@
 #!/bin/bash
-echo "match (n) return n;" | cypher-shell
+HOST=neo4j-neo4j
+echo "Starting nginx"
+/etc/init.d/nginx start
+echo "Waiting for Nginx to start"
+sleep 5
+echo "Importing data"
+cat /var/www/html/merge.cypher | sed -e 's#file:/import/#http://conference-data.conference/#g' | tee | cypher-shell -a neo4j-neo4j.persistence
+echo "Stopping nginx"
+/etc/init.d/nginx stop
+echo "Endless loop"
+while true
+do 
+	sleep 100
+done

@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "conference.name" . }}
-  labels:
-    app: {{ include "conference.name" . }}
-data:
-  configuration.properties: |-
-    neo4j.uri: {{ .Values.neo4j.uri }}
