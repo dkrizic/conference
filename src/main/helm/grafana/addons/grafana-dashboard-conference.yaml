@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard-demo
+  name: grafana-dashboard-conference
   namespace: monitoring
   labels:
     grafana-dashboard: "1"

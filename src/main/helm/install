@@ -1,6 +1,8 @@
 #!/bin/bash
 helm init --wait
 helm install --name neo4j --namespace persistence -f neo4j/minikube.yaml stable/neo4j
+kubectl -n persistence delete service neo4j-neo4j 
+kubectl -n persistence replace -f neo4j/service.yaml 
 helm install --name prometheus --namespace monitoring -f prometheus/minikube.yaml stable/prometheus
 kubectl -n monitoring create -f grafana/addons/grafana-datasource-prometheus.yaml
 kubectl -n monitoring create -f grafana/addons/grafana-dashboard-conference.yaml

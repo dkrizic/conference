@@ -7,11 +7,6 @@ metadata:
     helm.sh/chart: {{ include "conference.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  annotations:
-    prometheus.io/scrape: 'true'
-    prometheus.io/scheme: http
-    prometheus.io/path: /actuator/prometheus
-    prometheus.io/port: '80'
 spec:
   type: {{ .Values.service.type }}
   ports:
