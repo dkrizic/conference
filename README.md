@@ -92,18 +92,11 @@ without authentication.
 
 ### Import data to neo4j
 
-Copy the data from src/main/data to the running neo4j pod:
-
-    $ cd src/main/data
-    $ kubectl -n persistence cp . neo4j-neo4j-core-0:/var/lib/neo4j/import
+    helm install --name conference-data --namespace conference conference-data
     
 Now exec into the running neo4j container 
 
     $ kubectl -n persistence exec -ti neo4j-neo4j-core-0 bash
-
-and run the following commands:
-
-    # cat /var/lib/neo4j/import/import/merge.cypher | cypher-shell
     
 We can now verify by running:
 
