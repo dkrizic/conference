@@ -1,9 +1,10 @@
 package com.prodyna.pac.conference.frontend.model;
 
-import com.prodyna.pac.conference.frontend.entity.Room;
-import com.prodyna.pac.conference.frontend.entity.Talk;
+import com.prodyna.pac.conference.frontend.entity.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Data
 @NoArgsConstructor

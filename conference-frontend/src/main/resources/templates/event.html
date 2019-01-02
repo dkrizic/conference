@@ -24,10 +24,12 @@
                 <tr th:each="slot : ${slots}">
                     <td th:text="${slot.datetime}">12:00</td>
                     <th:block th:each="roomModel : ${slot.roomModels}">
-                        <td>
-                            <th:if="${roomModel.talk != null}">
-                                <a th:href="@{'/talks/' + ${roomModel.talk?.numericId()}}" th:text="${roomModel.talk?.title}">Talk title</a>
-                            </th:if>
+                        <td th:with="talk=${roomModel.talk}">
+                            <div th:if="${talk != null}">
+                                <a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk title</a>
+                                <div th:text="${talk.language.name}">english</div>
+                                <div th:text="${talk.level.name}">advanced</div>
+                            </p>
                         </td>
                     </th:block>
                 </tr>
