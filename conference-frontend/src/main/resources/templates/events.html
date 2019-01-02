@@ -16,14 +16,28 @@
                     <th>Location</th>
                     <th>Start date</th>
                     <th>End date</th>
+                    <th>Talks</th>
+                    <th>Languages</th>
+                    <th>Topics</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="event : ${events}">
+                <tr th:each="eventModel : ${eventModels}" th:with="event=${eventModel.event}">
                     <td><a th:href="@{'/events/' + ${event.numericId()}}" th:text="${event.name}">Event name</a></td>
                     <td th:text="${event.location.name}">Event location</td>
                     <td th:text="${event.startDate}">Start date</td>
                     <td th:text="${event.endDate}">End date</td>
+                    <td th:text="${eventModel.talkCount}">Languages</td>
+                    <td>
+                        <ul th:each="language : ${eventModel.languages}">
+                            <li th:text="${language.name}">language</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul th:each="topic : ${eventModel.topics}">
+                            <li th:text="${topic.name}">topic</li>
+                        </ul>
+                    </td>
                 </tr>
             </tbody>
         </table>

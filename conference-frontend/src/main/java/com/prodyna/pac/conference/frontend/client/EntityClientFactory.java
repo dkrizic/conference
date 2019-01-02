@@ -51,4 +51,6 @@ public class EntityClientFactory {
     @Bean
     public Client<TalkSearch> createTalkSearchClient() { return clientFactory.create( TalkSearch.class ); }
 
+    @Bean
+    public Client<EventSearch> createEventSearchClient() { return clientFactory.create( EventSearch.class ); }
 }

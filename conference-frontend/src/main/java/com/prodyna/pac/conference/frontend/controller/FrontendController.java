@@ -2,6 +2,7 @@ package com.prodyna.pac.conference.frontend.controller;
 
 import com.prodyna.pac.conference.frontend.converter.URIConverter;
 import com.prodyna.pac.conference.frontend.entity.*;
+import com.prodyna.pac.conference.frontend.model.EventModel;
 import com.prodyna.pac.conference.frontend.model.RoomModel;
 import com.prodyna.pac.conference.frontend.model.SlotModel;
 import io.micrometer.core.annotation.Timed;
@@ -27,6 +28,9 @@ public class FrontendController {
 
     @Autowired
     private Client<Event> eventClient;
+
+    @Autowired
+    private Client<EventSearch> eventSearchClient;
 
     @Autowired
     private Client<Room> roomClient;
@@ -61,12 +65,20 @@ public class FrontendController {
     @GetMapping("/events")
     @Timed("conference.frontend.events")
     public String events(Map<String,Object> model ) {
+        List<EventModel> eventModels = new ArrayList<EventModel>();
+
         Iterable<Event> events = eventClient.getAll();
         for( Event event : events ) {
             log.info("Found event {}", event );
+            int talkCount = 0; // eventSearchClient.get().talkCount( event.numericId() );
+            Set<Language> languages = eventSearchClient.get().languages( event.numericId() );
+            Set<Topic> topics = eventSearchClient.get().topics( event.numericId() );
+            EventModel eventModel = new EventModel( event, talkCount, languages, topics );
+            eventModels.add( eventModel );
         }
+
         model.put("title", "Events");
-        model.put("events", events );
+        model.put("eventModels", eventModels );
         return "events";
     }
 
