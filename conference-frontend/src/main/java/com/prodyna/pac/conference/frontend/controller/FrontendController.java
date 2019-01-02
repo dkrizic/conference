@@ -124,6 +124,7 @@ public class FrontendController {
         }
 
         model.put("slots", slotModels );
+        model.put("title", event.getName() );
         return "event";
     }
 
@@ -146,6 +147,34 @@ public class FrontendController {
         model.put( "title", person.getName() );
         model.put( "person", person );
         return "person";
+    }
+
+    @Timed("conference.frontend.talks")
+    @GetMapping("/talks")
+    public String talks( Map<String,Object> model ) {
+        model.put( "title", "Talks" );
+        return "talks";
+    }
+
+    @Timed("conference.frontend.locations")
+    @GetMapping("/locations")
+    public String locations( Map<String,Object> model ) {
+        model.put( "title", "Locations" );
+        return "locations";
+    }
+
+    @Timed("conference.frontend.persons")
+    @GetMapping("/persons")
+    public String persons( Map<String,Object> model ) {
+        model.put( "title", "Persons" );
+        return "persons";
+    }
+
+    @Timed("conference.frontend.topics")
+    @GetMapping("/topics")
+    public String topics( Map<String,Object> model ) {
+        model.put( "title", "Topics" );
+        return "topics";
     }
 
 }

@@ -7,36 +7,34 @@
 
 <div class="container">
 
-    <div class="starter-template">
-        <h1 th:text="${title}">Event name</h1>
-        <p th:text="${location.name}">Location name</p>
+    <h1 th:text="${title}">Event name</h1>
+    <p th:text="${location.name}">Location name</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th:block th:each="room : ${rooms}">
-                        <th th:text="${room.name}">Room name</th>
-                    </th:block>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="slot : ${slots}">
-                    <td th:text="${slot.datetime}">12:00</td>
-                    <th:block th:each="roomModel : ${slot.roomModels}">
-                        <td th:with="talk=${roomModel.talk}">
-                            <div th:if="${talk != null}">
-                                <a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk title</a>
-                                <div th:text="${talk.language.name}">english</div>
-                                <div th:text="${talk.level.name}">advanced</div>
-                            </p>
-                        </td>
-                    </th:block>
-                </tr>
-            </tbody>
-        </table>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>Time</th>
+            <th:block th:each="room : ${rooms}">
+                <th th:text="${room.name}">Room name</th>
+            </th:block>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="slot : ${slots}">
+            <td th:text="${slot.datetime}">12:00</td>
+            <th:block th:each="roomModel : ${slot.roomModels}">
+                <td th:with="talk=${roomModel.talk}">
+                    <div th:if="${talk != null}">
+                        <a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk title</a>
+                        <div th:text="${talk.language.name}">english</div>
+                        <div th:text="${talk.level.name}">advanced</div>
+                        </p>
+                </td>
+            </th:block>
+        </tr>
+        </tbody>
+    </table>
 
-    </div>
 
 </div>
 <!-- /.container -->
