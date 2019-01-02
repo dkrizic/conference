@@ -12,7 +12,7 @@ import java.util.Set;
 @RemoteResource("/api/levels")
 public class Level extends NumericEntity {
 
-    private String id;
+    private int id;
     private String name;
 
     @ToString.Exclude
