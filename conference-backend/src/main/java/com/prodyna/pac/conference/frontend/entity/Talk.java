@@ -38,4 +38,9 @@ public class Talk {
     @EqualsAndHashCode.Exclude
     private Language language;
 
+    @Relationship(type="HAS_LEVEL")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Level level;
+
 }

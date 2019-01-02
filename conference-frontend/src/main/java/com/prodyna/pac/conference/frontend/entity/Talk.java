@@ -30,6 +30,10 @@ public class Talk extends NumericEntity {
     @EqualsAndHashCode.Exclude
     private Set<Topic> topics;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Level level;
+
     @LinkedResource
     public Set<Person> getPersons() {
         return persons;
@@ -48,5 +52,10 @@ public class Talk extends NumericEntity {
     @LinkedResource
     public Set<Topic> getTopics() {
         return topics;
+    }
+
+    @LinkedResource
+    public Level getLevel() {
+        return level;
     }
 }

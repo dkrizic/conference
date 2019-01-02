@@ -36,6 +36,7 @@ load csv with headers from "file:/import/talk.csv" as line fieldterminator ','
 		t.slots = split(line.slots,";"),
 		t.title = line.title,
 		t.language = line.language,
+		t.level = toInt(line.level),
 		t.topics = split(line.topics,';');
 
 return "Loading languages";
@@ -48,6 +49,11 @@ load csv with headers from "file:/import/topic.csv" as line fieldterminator ','
 	merge (to:Topic {id:line.id})
 		set to.name = line.name,
 		to.parents = split(line.parents,";");
+
+return "Loading levels";
+load csv with headers from "file:/import/level.csv" as line fieldterminator ','
+	merge (l:Level {id:toInt(line.id)})
+		set l.name = line.name;
 
 return "Connecting rooms to locations";
 match (r:Room),(l:Location) where r.location = l.id
@@ -82,6 +88,10 @@ match (c:Topic) match (p:Topic) where p.id in c.parents
 return "Connecting talks to topics";
 match (t:Talk) match (to:Topic) where to.id in t.topics
 	merge (t)-[:IS_ABOUT]->(to);
+
+return "Connecting talks to levels;
+match (t:Talk) match (l:Level) where t.level = l.id
+	merge (t)-[:HAS_LEVEL]->(l);
 
 return "Cleaning up";
 match (t:Talk) remove t.topics,t.persons,t.slots,t.language;

@@ -1,5 +1,8 @@
-id,slots,persons,title,language,topics
-sb,1;100,dkrizic;tbock,Microservices with Spring Boot,en,spring-boot;kubernetes;docker
-vel,2;101,skirch;tbock,Team velicity in Scrum,en,scrum
-lom,3;102,tbock,Hassle with Lombock,en,lombok
-lom2,4;103,tbock,Die Qualen mit Lombock,de,lombok
+id,slots,persons,title,language,topics,level
+sb,1;100,dkrizic;tbock,Microservices with Spring Boot,en,spring-boot;kubernetes;docker,2
+vel,2;101,skirch;tbock,Team velicity in Scrum,en,scrum,2
+lom,3;102,tbock,Hassle with Lombock,en,lombok,3
+lom2,4;103,tbock,Die Qualen mit Lombock,de,lombok,3
+kubi,5;104,dkrizic,Introduction to Kubernetes,en,kubernetes;docker,1
+kuba,6;105,fassmus,Advanced concepts in Kubernetes,en,kubernetes;docker,2
+kubade,7;106,fassmus,Fortgeschrittene Konzepte in Kubernetes,de,kubernetes;docker,2
