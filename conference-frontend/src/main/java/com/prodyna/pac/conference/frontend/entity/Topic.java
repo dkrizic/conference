@@ -23,6 +23,10 @@ public class Topic extends NumericEntity {
     @ToString.Exclude
     private Set<Topic> children;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Talk> talks;
+
     @LinkedResource
     public Set<Topic> getParents() {
         return parents;
@@ -31,5 +35,10 @@ public class Topic extends NumericEntity {
     @LinkedResource
     public Set<Topic> getChildren() {
         return children;
+    }
+
+    @LinkedResource
+    public Set<Talk> getTalks() {
+        return talks;
     }
 }

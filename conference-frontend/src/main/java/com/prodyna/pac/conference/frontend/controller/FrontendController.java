@@ -42,6 +42,9 @@ public class FrontendController {
     private Client<Talk> talkClient;
 
     @Autowired
+    private Client<Topic> topicClient;
+
+    @Autowired
     private Client<RoomSearch> roomSearchClient;
 
     @Autowired
@@ -49,6 +52,9 @@ public class FrontendController {
 
     @Autowired
     private Client<Person> personClient;
+
+    @Autowired
+    private Client<TopicSearch> topicSearchClient;
 
     @Autowired
     private URIConverter uriConverter;
@@ -141,7 +147,7 @@ public class FrontendController {
 
     @Timed("conference.frontend.person")
     @GetMapping("/persons/{personId}")
-    public String person( Map<String,Object> model, @PathVariable long personId ) {
+    public String person( Map<String,Object> model, @PathVariable("personId") long personId ) {
         URI uri = uriConverter.convertToURI( Person.class, personId );
         Person person = personClient.get( uri );
         model.put( "title", person.getName() );
@@ -153,6 +159,7 @@ public class FrontendController {
     @GetMapping("/talks")
     public String talks( Map<String,Object> model ) {
         model.put( "title", "Talks" );
+        model.put( "talks", talkClient.getAll() );
         return "talks";
     }
 
@@ -160,12 +167,14 @@ public class FrontendController {
     @GetMapping("/locations")
     public String locations( Map<String,Object> model ) {
         model.put( "title", "Locations" );
+        model.put( "locations", locationClient.getAll() );
         return "locations";
     }
 
     @Timed("conference.frontend.persons")
     @GetMapping("/persons")
     public String persons( Map<String,Object> model ) {
+        model.put( "persons", personClient.getAll() );
         model.put( "title", "Persons" );
         return "persons";
     }
@@ -173,8 +182,20 @@ public class FrontendController {
     @Timed("conference.frontend.topics")
     @GetMapping("/topics")
     public String topics( Map<String,Object> model ) {
+        model.put( "toplevel", topicSearchClient.get().toplevel() );
+        model.put( "topicSearch", topicSearchClient.get() );
         model.put( "title", "Topics" );
         return "topics";
+    }
+
+    @Timed("conference.frontend.topic")
+    @GetMapping("/topics/{topicId}")
+    public String topic( Map<String,Object> model, @PathVariable("topicId") long topicId ) {
+        URI uri = uriConverter.convertToURI( Topic.class, topicId );
+        Topic topic = topicClient.get( uri );
+        model.put( "title",  topic.getName() );
+        model.put( "topic", topic );
+        return "topic";
     }
 
 }

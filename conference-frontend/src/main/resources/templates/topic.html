@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:include="fragments/header :: header"/>
+<body>
+
+<nav th:replace="fragments/navigation :: navigation"/>
+
+<div class="container">
+
+    <h1 th:text="${title}">Talk title</h1>
+
+    <h2>Talks</h2>
+
+    <ul th:each="talk : ${topic.talks}">
+        <li>
+            <a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk title</a>
+        </li>
+    </ul>
+
+    <h2>Parents</h2>
+
+    <ul th:each="parent : ${topic.parents}">
+        <li>
+            <a th:href="@{'/topics/' + ${parent.numericId()}}" th:text="${parent.name}">Parent name</a>
+        </li>
+    </ul>
+
+    <h2>Children</h2>
+
+    <ul th:each="child : ${topic.children}">
+        <li>
+            <a th:href="@{'/topics/' + ${child.numericId()}}" th:text="${child.name}">Child name</a>
+        </li>
+    </ul>
+
+</div>
+
+<div lang="en" th:include="fragments/footer :: footer"></div>
+
+</body>
+</html>

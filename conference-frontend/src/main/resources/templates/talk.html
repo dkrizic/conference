@@ -27,18 +27,11 @@
 
     <h2>Topics</h2>
     <ul th:each="topic : ${talk.topics}">
-        <li th:text="${topic.name}">Topic</li>
-    </ul>
-
-    <h2>Language</h2>
-    <ul>
-        <li th:text="${talk.language.name}">english</li>
+        <li><a th:href="@{'/topics/' + ${topic.numericId()}}" th:text="${topic.name}">Topic</a></li>
     </ul>
 
     <h2>Level</h2>
-    <ul>
-        <li th:text="${talk.level.name}">english</li>
-    </ul>
+    <p th:text="${talk.level.name}">english</p>
 
 </div>
 

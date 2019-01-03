@@ -9,6 +9,10 @@
 
     <h1 th:text="${title}">Talk title</h1>
 
+    <ul th:each="talk : ${talks}">
+        <li><a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk name</a></li>
+    </ul>
+
 </div>
 
 <div lang="en" th:include="fragments/footer :: footer"></div>

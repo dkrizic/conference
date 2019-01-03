@@ -9,8 +9,8 @@ import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import java.util.Set;
 
 @Data
-@RemoteResource("/api/persons")
-public class Person extends NumericEntity {
+@RemoteResource("/api/organizations")
+public class Organization extends NumericEntity {
 
     private String id;
 
@@ -18,17 +18,10 @@ public class Person extends NumericEntity {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Talk> talks;
-
-    private Organization organization;
+    private Set<Person> persons;
 
     @LinkedResource
-    public Set<Talk> getTalks() {
-        return talks;
-    }
-
-    @LinkedResource
-    public Organization getOrganization() {
-        return organization;
+    public Set<Person> getPersons() {
+        return persons;
     }
 }

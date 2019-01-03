@@ -7,8 +7,11 @@
 
 <div class="container">
 
-    <h1 th:text="${title}">Talk title</h1>
+    <h1 th:text="${title}">Locations</h1>
 
+    <ul th:each="location : ${locations}">
+        <li th:text="${location.name}">Location name</li>
+    </ul>
 
 </div>
 

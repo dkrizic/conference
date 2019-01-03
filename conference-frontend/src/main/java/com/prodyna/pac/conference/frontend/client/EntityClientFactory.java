@@ -53,4 +53,10 @@ public class EntityClientFactory {
 
     @Bean
     public Client<EventSearch> createEventSearchClient() { return clientFactory.create( EventSearch.class ); }
+
+    @Bean
+    public Client<Topic> createTopicClient() { return clientFactory.create( Topic.class ); }
+
+    @Bean
+    public Client<TopicSearch> createTopicSearchClient() { return clientFactory.create( TopicSearch.class ); }
 }

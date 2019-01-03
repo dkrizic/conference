@@ -7,7 +7,7 @@ import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import java.util.Set;
 
 @Data
-@RemoteResource("/api/location")
+@RemoteResource("/api/locations")
 public class Location extends NumericEntity {
 
     private String name;

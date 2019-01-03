@@ -1,7 +1,8 @@
 return "Loading persons";
 load csv with headers from "file:/import/person.csv" as line fieldterminator ','
 	merge (p:Person {id:line.id})
-		set p.name = line.name;
+		set p.name = line.name,
+			p.organization = line.organization;
 
 return "Loading locations";
 load csv with headers from "file:/import/location.csv" as line fieldterminator ','
@@ -12,32 +13,32 @@ return "Loading rooms";
 load csv with headers from "file:/import/room.csv" as line fieldterminator ','
 	merge (r:Room {id:line.id})
 		set r.name = line.name,
-		r.location = line.location;
+			r.location = line.location;
 
 return "Loading slots";
 load csv with headers from "file:/import/slot.csv" as line fieldterminator ','
 	merge (s:Slot {id:line.id})
 		set s.event = line.event,
- 		s.room = line.room,
-                s.datetime = line.datetime;
+ 			s.room = line.room,
+			s.datetime = line.datetime;
 
 return "Loading events";
 load csv with headers from "file:/import/event.csv" as line fieldterminator ','
 	merge (e:Event {id:line.id})
 		set e.location = line.location,
-                e.name = line.name,
- 		e.startDate = line.startDate,
-                e.endDate = line.endDate;
+			e.name = line.name,
+ 			e.startDate = line.startDate,
+			e.endDate = line.endDate;
 
 return "Loading talks";
 load csv with headers from "file:/import/talk.csv" as line fieldterminator ','
 	merge (t:Talk {id:line.id})
 		set t.persons = split(line.persons,";"),
-		t.slots = split(line.slots,";"),
-		t.title = line.title,
-		t.language = line.language,
-		t.level = toInt(line.level),
-		t.topics = split(line.topics,';');
+			t.slots = split(line.slots,";"),
+			t.title = line.title,
+			t.language = line.language,
+			t.level = toInt(line.level),
+			t.topics = split(line.topics,';');
 
 return "Loading languages";
 load csv with headers from "file:/import/language.csv" as line
@@ -48,12 +49,17 @@ return "Loading topics";
 load csv with headers from "file:/import/topic.csv" as line fieldterminator ','
 	merge (to:Topic {id:line.id})
 		set to.name = line.name,
-		to.parents = split(line.parents,";");
+			to.parents = split(line.parents,";");
 
 return "Loading levels";
 load csv with headers from "file:/import/level.csv" as line fieldterminator ','
 	merge (l:Level {id:toInt(line.id)})
 		set l.name = line.name;
+
+return "Loading organizations";
+load csv with headers from "file:/import/organization.csv" as line
+	merge (o:Organization {id:line.id})
+		set o.name = line.name;
 
 return "Connecting rooms to locations";
 match (r:Room),(l:Location) where r.location = l.id
@@ -89,9 +95,13 @@ return "Connecting talks to topics";
 match (t:Talk) match (to:Topic) where to.id in t.topics
 	merge (t)-[:IS_ABOUT]->(to);
 
-return "Connecting talks to levels;
+return "Connecting talks to levels";
 match (t:Talk) match (l:Level) where t.level = l.id
 	merge (t)-[:HAS_LEVEL]->(l);
+
+return "Connecting persons to organizations";
+match (p:Person) match (o:Organization) where p.organization = o.id
+	merge (p)-[:WORKS_FOR]->(o);
 
 return "Cleaning up";
 match (t:Talk) remove t.topics,t.persons,t.slots,t.language;

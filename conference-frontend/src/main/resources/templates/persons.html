@@ -9,6 +9,12 @@
 
     <h1 th:text="${title}">Talk title</h1>
 
+    <ul th:each="person : ${persons}">
+        <li>
+            <a th:href="@{'/persons/' + ${person.numericId()}}" th:text="${person.name}">Talk name</a>
+            (<div th:text="${person.organization.name}" th:remove="tag">Organization name</div>)
+        </li>
+    </ul>
 
 </div>
 

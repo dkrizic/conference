@@ -26,9 +26,8 @@
                 <td th:with="talk=${roomModel.talk}">
                     <div th:if="${talk != null}">
                         <a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk title</a>
-                        <div th:text="${talk.language.name}">english</div>
-                        <div th:text="${talk.level.name}">advanced</div>
-                        </p>
+                        (<div th:text="${talk.language.name}" th:remove="tag">english</div>,
+                        <div th:text="${talk.level.name}" th:remove="tag">advanced</div>)
                 </td>
             </th:block>
         </tr>

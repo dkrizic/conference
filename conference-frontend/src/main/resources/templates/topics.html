@@ -9,6 +9,42 @@
 
     <h1 th:text="${title}">Talk title</h1>
 
+    <ul th:each="topic : ${toplevel}">
+        <li>
+            <a th:href="@{'/topics/' + ${topic.numericId()}}" th:text="${topic.name}">Talk name</a>
+            &nbsp;(<div th:text="${topicSearch.subtalks(topic.numericId()).size()}" th:remove="tag"/>)
+            <ul th:each="child1 : ${topic.children}">
+                <li>
+                    <a th:href="@{'/topics/' + ${child1.numericId()}}" th:text="${child1.name}">Talk name</a>
+                    &nbsp;(<div th:text="${topicSearch.subtalks(child1.numericId()).size()}" th:remove="tag"/>)
+                    <ul th:each="child2 : ${child1.children}">
+                        <li>
+                            <a th:href="@{'/topics/' + ${child2.numericId()}}" th:text="${child2.name}">Talk name</a>
+                            &nbsp;(<div th:text="${topicSearch.subtalks(child2.numericId()).size()}" th:remove="tag"/>)
+                            <ul th:each="child3 : ${child2.children}">
+                                <li>
+                                    <a th:href="@{'/topics/' + ${child3.numericId()}}" th:text="${child3.name}">Talk name</a>
+                                    &nbsp;(<div th:text="${topicSearch.subtalks(child3.numericId()).size()}" th:remove="tag"/>)
+                                    <ul th:each="child4 : ${child3.children}">
+                                        <li>
+                                            <a th:href="@{'/topics/' + ${child4.numericId()}}" th:text="${child4.name}">Talk name</a>
+                                            &nbsp;(<div th:text="${topicSearch.subtalks(child4.numericId()).size()}" th:remove="tag"/>)
+                                            <ul th:each="child5 : ${child4.children}">
+                                                <li>
+                                                    <a th:href="@{'/topics/' + ${child5.numericId()}}" th:text="${child5.name}">Talk name</a>
+                                                    &nbsp;(<div th:text="${topicSearch.subtalks(child5.numericId()).size()}" th:remove="tag"/>)
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
 </div>
 

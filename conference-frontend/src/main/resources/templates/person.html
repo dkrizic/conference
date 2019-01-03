@@ -8,6 +8,8 @@
 <div class="container">
 
     <h1 th:text="${title}">Talk title</h1>
+    <h2>Organization</h2>
+    <p th:text="${person.organization.name}">Organization</p>
     <h2>Talks</h2>
     <ul th:each="talk : ${person.talks}">
         <li><a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk name</a></li>
