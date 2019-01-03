@@ -25,7 +25,7 @@ public interface TopicRepository extends Neo4jRepository<Topic,Long> {
     Set<Topic> findTopLevel(@Param("eventId") Long eventId, @Param("slotId") Long slotId);
 
     @RestResource(path = "subtalks",rel="subtalks")
-    @Query("match (t:Topic)<-[*]-(t2:Topic)<--(ta:Talk) where id(t) = {topicId} return ta")
+    @Query("match (t:Topic)<-[*0..5]-(t2:Topic)<--(ta:Talk) where id(t) = {topicId} return ta")
     Set<Talk> findSubTalks(@Param("topicId") Long topicId);
 
 }

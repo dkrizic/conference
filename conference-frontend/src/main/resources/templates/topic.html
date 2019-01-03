@@ -11,7 +11,7 @@
 
     <h2>Talks</h2>
 
-    <ul th:each="talk : ${topic.talks}">
+    <ul th:each="talk : ${@topicSearchClient.get().subtalks(topic.numericId())}">
         <li>
             <a th:href="@{'/talks/' + ${talk.numericId()}}" th:text="${talk.title}">Talk title</a>
         </li>
