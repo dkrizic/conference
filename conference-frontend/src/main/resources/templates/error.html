@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:include="fragments/header :: header"/>
+<body>
+
+<nav th:replace="fragments/navigation :: navigation"/>
+
+<div class="container">
+
+    <h1 th:text="${title}">Error/h1>
+    <p th:text="${message}">Sorry, try again later</p>
+
+</div>
+<!-- /.container -->
+
+<div lang="en" th:include="fragments/footer :: footer"></div>
+
+</body>
+</html>

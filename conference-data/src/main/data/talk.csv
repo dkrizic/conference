@@ -6,3 +6,5 @@ lom2,4;103,tbock,Die Qualen mit Lombock,de,lombok,3
 kubi,5;104,dkrizic,Introduction to Kubernetes,en,kubernetes;docker,1
 kuba,6;105,fassmus,Advanced concepts in Kubernetes,en,kubernetes;docker,2
 kubade,7;106,fassmus,Fortgeschrittene Konzepte in Kubernetes,de,kubernetes;docker,2
+sdnj,0;107,dkrizic,Accessing Neo4j using Spring Data Neo4j,en,spring-data-neo4j;neo4j,2
+sdrn,108,dkrizic,Exposing Graph data via REST,en,spring-data-neo4j;spring-data-rest;neo4j,3

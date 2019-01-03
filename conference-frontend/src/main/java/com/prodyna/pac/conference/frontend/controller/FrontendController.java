@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.frontend.controller;
 
+import com.prodyna.pac.conference.frontend.client.BackendAddress;
 import com.prodyna.pac.conference.frontend.converter.URIConverter;
 import com.prodyna.pac.conference.frontend.entity.*;
 import com.prodyna.pac.conference.frontend.model.EventModel;
@@ -58,6 +59,16 @@ public class FrontendController {
 
     @Autowired
     private URIConverter uriConverter;
+
+    @Autowired
+    private BackendAddress backendAddress;
+
+    @GetMapping("/error")
+    public String error( Map<String,Object> model ) {
+        model.put("title", "Oops...");
+        model.put("message", "Something is not working, please ensure that the backend is available under " + backendAddress.getString() );
+        return "error";
+    }
 
     @GetMapping("/test")
     @Timed("conference.frontend.test")
