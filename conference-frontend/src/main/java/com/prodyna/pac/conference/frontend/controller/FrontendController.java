@@ -183,7 +183,6 @@ public class FrontendController {
     @GetMapping("/topics")
     public String topics( Map<String,Object> model ) {
         model.put( "toplevel", topicSearchClient.get().toplevel() );
-        model.put( "topicSearch", topicSearchClient.get() );
         model.put( "title", "Topics" );
         return "topics";
     }

@@ -14,49 +14,49 @@ public class EntityClientFactory {
     private ClientFactory clientFactory;
 
     @Bean
-    public Client<Event> createEventClient() {
+    public Client<Event> eventClient() {
         return clientFactory.create( Event.class );
     }
 
     @Bean
-    public Client<Location> createLocationClient() {
+    public Client<Location> locationClient() {
         return clientFactory.create( Location.class );
     }
 
     @Bean
-    public Client<Room> createRoomClient() {
+    public Client<Room> roomClient() {
         return clientFactory.create( Room.class );
     }
 
     @Bean
-    public Client<Talk> createTalkClient() {
+    public Client<Talk> talkClient() {
         return clientFactory.create( Talk.class );
     }
 
     @Bean
-    public Client<Person> createPersonClient() {
+    public Client<Person> personClient() {
         return clientFactory.create( Person.class );
     }
 
     @Bean
-    public Client<RoomSearch> createRoomSearchClient() {
+    public Client<RoomSearch> roomSearchClient() {
         return clientFactory.create( RoomSearch.class );
     }
 
     @Bean
-    public Client<SlotSearch> createSlotSearchClient() {
+    public Client<SlotSearch> slotSearchClient() {
         return clientFactory.create( SlotSearch.class );
     }
 
     @Bean
-    public Client<TalkSearch> createTalkSearchClient() { return clientFactory.create( TalkSearch.class ); }
+    public Client<TalkSearch> talkSearchClient() { return clientFactory.create( TalkSearch.class ); }
 
     @Bean
-    public Client<EventSearch> createEventSearchClient() { return clientFactory.create( EventSearch.class ); }
+    public Client<EventSearch> eventSearchClient() { return clientFactory.create( EventSearch.class ); }
 
     @Bean
-    public Client<Topic> createTopicClient() { return clientFactory.create( Topic.class ); }
+    public Client<Topic> topicClient() { return clientFactory.create( Topic.class ); }
 
     @Bean
-    public Client<TopicSearch> createTopicSearchClient() { return clientFactory.create( TopicSearch.class ); }
+    public Client<TopicSearch> topicSearchClient() { return clientFactory.create( TopicSearch.class ); }
 }
