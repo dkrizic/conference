@@ -6,7 +6,7 @@ metadata:
   labels:
     grafana-dashboard: "1"
 data:
-  demo-dashboard.json: |-
+  conference-dashboard.json: |-
     {
       "annotations": {
         "list": [
@@ -24,6 +24,7 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
+      "id": 1,
       "links": [],
       "panels": [
         {
@@ -325,7 +326,7 @@ data:
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Request time",
+          "title": "Request time (ingress)",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -489,24 +490,25 @@ data:
               "refId": "A"
             },
             {
-              "expr": "avg(rate(conference_frontend_events_seconds_sum[2m]) / rate(conference_frontend_events_seconds_count[2m]))",
+              "expr": "avg(rate(conference_frontend_events_seconds_sum[2m]) / rate(conference_frontend_events_seconds_count[2m]) )",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Events",
               "refId": "B"
             },
             {
-              "expr": "avg(rate(conference_frontend_event_seconds_sum[2m]) / rate(conference_frontend_event_seconds_count[2m]))",
+              "expr": "avg(rate(conference_frontend_topics_seconds_sum[2m]) / rate(conference_frontend_topics_seconds_count[2m]))",
               "format": "time_series",
+              "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "Event",
+              "legendFormat": "Topics",
               "refId": "E"
             },
             {
-              "expr": "avg(rate(conference_frontend_talk_seconds_sum[2m]) / rate(conference_frontend_talk_seconds_count[2m]))",
+              "expr": "avg(rate(conference_frontend_talks_seconds_sum[2m]) / rate(conference_frontend_talks_seconds_count[2m]))",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "Talk",
+              "legendFormat": "Talks",
               "refId": "C"
             },
             {
@@ -515,13 +517,27 @@ data:
               "intervalFactor": 1,
               "legendFormat": "Person",
               "refId": "D"
+            },
+            {
+              "expr": "avg(rate(conference_frontend_talk_seconds_sum[2m]) / rate(conference_frontend_talk_seconds_count[2m]))",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Talk",
+              "refId": "F"
+            },
+            {
+              "expr": "avg(rate(conference_frontend_talks_seconds_sum[2m]) / rate(conference_frontend_talks_seconds_count[2m]))",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Talks",
+              "refId": "G"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Panel Title",
+          "title": "Frontend requests",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -776,15 +792,29 @@ data:
               "expr": "conference_frontend_talk_seconds_count",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "Talk",
+              "legendFormat": "Talks",
               "refId": "D"
+            },
+            {
+              "expr": "conference_frontend_talk_seconds_count",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Talk",
+              "refId": "E"
+            },
+            {
+              "expr": "conference_frontend_locations_seconds_count",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Locations",
+              "refId": "F"
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Request time",
+          "title": "Request times (by type)",
           "tooltip": {
             "shared": false,
             "sort": 0,
