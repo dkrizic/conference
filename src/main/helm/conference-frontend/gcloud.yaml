@@ -4,6 +4,3 @@ service:
   type: NodePort
 image:
   pullPolicy: Always
-conference:
-  backend:
-    uri: http://conference.35.186.207.79.nip.io

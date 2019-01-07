@@ -2,9 +2,9 @@ ingress:
   enabled: false
   annotations:
     kubernetes.io/ingress.global-static-ip-name: conference-ip
-neo4j:
-  uri: bolt://neo4j-neo4j.persistence
 image:
   pullPolicy: Always
 service:
   type: NodePort
+neo4j:
+  uri: bolt://neo4j-neo4j.persistence
