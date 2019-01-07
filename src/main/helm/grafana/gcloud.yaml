@@ -1,0 +1,16 @@
+persistence:
+  enabled: true
+  size: 1G
+  accessModes:
+  - ReadWriteOnce
+ingress: 
+  enabled: false
+sidecar:
+  dashboards:
+    enabled: true
+    searchNamespace: monitoring
+    label: grafana-dashboard
+  datasources:
+    enabled: true
+    searchNamespace: monitoring
+    label: grafana-datasource

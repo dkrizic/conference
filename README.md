@@ -181,3 +181,48 @@ http://conference.192.168.99.100.nip.io/api
 
 for accessing the UI.
 
+# Installation on Google Cloud
+
+## Create a Kubernetes cluster in google cloud
+
+    $ gcloud container clusters create --addons=HttpLoadBalancing,KubernetesDashboard --enable-network-policy -m n1-standard-2 --zone=europe-west4-a --num-nodes=3 conference
+    $ gloud container clusters list
+    $ kubectl create serviceaccount --namespace kube-system tiller
+    $ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+    $ helm init --wait
+    $ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+    $ helm ls
+
+## Install the basics
+
+    $ helm install --name neo4j --namespace persistence -f neo4j/gloud.yaml stable/neo4j
+    $ kubectl -n persistence delete service neo4j-neo4j 
+    $ kubectl create namespace monitoring
+    $ helm install --name prometheus --namespace monitoring -f prometheus/gloud.yaml stable/prometheus
+    $ kubectl -n monitoring create -f grafana/addons/grafana-datasource-prometheus.yaml
+    $ kubectl -n monitoring create -f grafana/addons/grafana-dashboard-conference.yaml
+    $ helm install --name grafana --namespace monitoring -f grafana/gcloud.yaml stable/grafana
+
+## Login to Dashboard
+
+    $ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^deployment-controller-token-/{print $1}') | awk '$1=="token:"{print $2}'
+    $ kubectl proxy
+
+## Install the application
+
+    $ kubectl create namespace conference
+    $ helm install --name conference-backend --namespace conference -f conference-backend/gcloud.yaml conference-backend
+    $ helm install --name conference-frontend --namespace conference -f conference-frontend/gcloud.yaml conference-frontend
+    $ helm install --name conference-data --namespace conference conference-data
+
+## Access conference-backend
+
+    $ kubectl -n conference port-forward $(kubectl -n conference get pods | grep conference-backend | awk '{print $1}') 8080:80 &
+    $ open http://localhost:8080/api
+
+## Access conference-frontend directly
+
+   $ kubectl -n conference port-forward $(kubectl -n conference get pods | grep conference-frontend | awk '{print $1}') 8080:80
+   $ open http://localhost:8080/
+
+

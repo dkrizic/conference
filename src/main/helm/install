@@ -9,7 +9,8 @@ fi
 helm init --wait
 kubectl create namespace persistence
 helm install --name neo4j --namespace persistence -f neo4j/$environment.yaml stable/neo4j
-kubectl -n persistence replace -f neo4j/service.yaml 
+kubectl -n persistence delete service neo4j-neo4j 
+kubectl -n persistence create -f neo4j/service.yaml
 
 kubectl create namespace monitoring
 helm install --name prometheus --namespace monitoring -f prometheus/$environment.yaml stable/prometheus
