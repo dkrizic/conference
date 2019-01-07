@@ -49,3 +49,7 @@ affinity: {}
 
 neo4j:
   uri: bolt://neo4j
+
+conference:
+  backend:
+    uri: http://35.186.207.79

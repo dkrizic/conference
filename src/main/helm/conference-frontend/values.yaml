@@ -47,5 +47,6 @@ tolerations: []
 
 affinity: {}
 
-neo4j:
-  uri: bolt://neo4j
+conference:
+  backend:
+    uri: http://conference-backend

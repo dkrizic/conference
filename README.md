@@ -193,6 +193,10 @@ for accessing the UI.
     $ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
     $ helm ls
 
+### Reserve a static IP
+
+    $ gcloud compute addresses create conference-ip --global
+
 ## Install the basics
 
     $ helm install --name neo4j --namespace persistence -f neo4j/gloud.yaml stable/neo4j
@@ -214,6 +218,11 @@ for accessing the UI.
     $ helm install --name conference-backend --namespace conference -f conference-backend/gcloud.yaml conference-backend
     $ helm install --name conference-frontend --namespace conference -f conference-frontend/gcloud.yaml conference-frontend
     $ helm install --name conference-data --namespace conference conference-data
+
+## Install special ingresses for gcloud
+
+    $ kubectl -n conference create -f conference-backend/gcloud-ingress.yaml 
+    $ kubectl -n conference create -f conference-frontend/gcloud-ingress.yaml 
 
 ## Access conference-backend
 
