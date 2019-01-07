@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "conference.name" . }}
+  name: {{ include "application.name" . }}
   labels:
-    app: {{ include "conference.name" . }}
+    app: {{ include "application.name" . }}
 data:
   application.yaml: |-
     server:

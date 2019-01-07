@@ -1,22 +1,22 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ include "conference.fullname" . }}
+  name: {{ include "application.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "conference.name" . }}
-    helm.sh/chart: {{ include "conference.chart" . }}
+    app.kubernetes.io/name: {{ include "application.name" . }}
+    helm.sh/chart: {{ include "application.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "conference.name" . }}
+      app.kubernetes.io/name: {{ include "application.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "conference.name" . }}
+        app.kubernetes.io/name: {{ include "application.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: SPRING_APPLICATION_NAME
-              value: "{{ include "conference.name" . }}"
+              value: "{{ include "application.name" . }}"
           ports:
             - name: http
               containerPort: 80
@@ -52,4 +52,4 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "conference.name" . }}
+      serviceAccountName: {{ include "application.name" . }}

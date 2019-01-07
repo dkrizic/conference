@@ -2,5 +2,7 @@ ingress:
   enabled: true
   hosts: 
   - conference.192.168.99.100.nip.io
+image:
+  pullPolicy: Always
 neo4j:
   uri: bolt://neo4j-neo4j.persistence
