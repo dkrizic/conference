@@ -225,4 +225,4 @@ for accessing the UI.
    $ kubectl -n conference port-forward $(kubectl -n conference get pods | grep conference-frontend | awk '{print $1}') 8080:80
    $ open http://localhost:8080/
 
-
+t
