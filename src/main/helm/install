@@ -26,3 +26,5 @@ helm install --name conference-data --namespace conference conference-data
 
 echo "Grafana password"
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+#helm install stable/nginx-ingress --name nginx-ingress --namespace kube-system --set controller.replicaCount=2

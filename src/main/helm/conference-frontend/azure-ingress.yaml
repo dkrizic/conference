@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  name: conference-frontend
+  namespace: conference
+spec:
+  rules:
+  - host: conference.13.95.224.46.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: conference-frontend
+          servicePort: 80
+        path: /
+      - backend:
+          serviceName: conference-backend
+          servicePort: 80
+        path: /api/
