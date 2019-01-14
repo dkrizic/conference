@@ -6,7 +6,8 @@ then
   exit 1
 fi
 
-helm init --wait
+kubectl apply -f helm/$environment.yaml
+helm init --service-account helm --wait
 kubectl create namespace persistence
 helm install --name neo4j --namespace persistence -f neo4j/$environment.yaml stable/neo4j
 kubectl -n persistence delete service neo4j-neo4j 

@@ -1,0 +1,6 @@
+ingress:
+  enabled: false
+service:
+  type: NodePort
+image:
+  pullPolicy: Always
