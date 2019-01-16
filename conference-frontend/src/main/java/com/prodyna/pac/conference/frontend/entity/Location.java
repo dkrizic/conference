@@ -7,6 +7,7 @@ import uk.co.blackpepper.bowman.annotation.RemoteResource;
 import java.util.Set;
 
 @Data
+@EqualsAndHashCode(callSuper=true)
 @RemoteResource("/api/locations")
 public class Location extends NumericEntity {
 
