@@ -31,4 +31,4 @@ management:
     enabled: false
 conference:
   backend:
-    url: http://conference.192.168.99.100.nip.io
+    url: http://conference.192.168.99.105.nip.io
