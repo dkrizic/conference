@@ -25,6 +25,6 @@ public interface PersonRepository extends Neo4jRepository<Person,Long> {
     Page<Person> findAll( Pageable p );
 
     @RestResource
-    Page<Person> findByName(@Param("name") String name, Pageable p );
+    Person findByName(@Param("name") String name );
 
 }

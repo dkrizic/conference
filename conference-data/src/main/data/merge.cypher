@@ -2,7 +2,8 @@ return "Loading persons";
 load csv with headers from "file:/import/person.csv" as line fieldterminator ','
 	merge (p:Person {id:line.id})
 		set p.name = line.name,
-			p.organization = line.organization;
+			p.organization = line.organization,
+			p.hashedPassword = line.hashedPassword;
 
 return "Loading locations";
 load csv with headers from "file:/import/location.csv" as line fieldterminator ','

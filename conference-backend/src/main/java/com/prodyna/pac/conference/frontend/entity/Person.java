@@ -18,6 +18,8 @@ public class Person {
     @Index(unique = true)
     private String name;
 
+    private String hashedPassword;
+
     @Relationship(type="BY_PERSON",direction=Relationship.INCOMING)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

@@ -1,5 +1,5 @@
-id,name,organization
-dkrizic,Darko Krizic,prodyna
+id,name,organization,hashedPassword
+dkrizic,Darko Krizic,prodyna,6ca13d52ca70c883e0f0bb101e425a89e8624de51db2d2392593af6a84118090
 tbock,Torben Bock,prodyna
 skirch,Sebastian Kirch,prodyna
 fassmus,Florian Assmus,prodyna
