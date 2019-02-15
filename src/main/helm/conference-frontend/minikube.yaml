@@ -1,6 +1,6 @@
 ingress:
   enabled: true
   hosts: 
-  - conference.192.168.99.100.nip.io
+  - conference.minikube
 image:
   pullPolicy: IfNotPresent
