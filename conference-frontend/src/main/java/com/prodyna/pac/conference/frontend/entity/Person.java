@@ -20,6 +20,10 @@ public class Person extends NumericEntity {
     @EqualsAndHashCode.Exclude
     private Set<Talk> talks;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Role> roles;
+
     private Organization organization;
 
     @LinkedResource
@@ -31,4 +35,7 @@ public class Person extends NumericEntity {
     public Organization getOrganization() {
         return organization;
     }
+
+    @LinkedResource
+    public Set<Role> getRoles() { return roles; }
 }
