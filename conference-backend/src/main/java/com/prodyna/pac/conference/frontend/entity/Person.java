@@ -30,4 +30,9 @@ public class Person {
     @EqualsAndHashCode.Exclude
     private Organization organization;
 
+    @Relationship(type="MEMBER_OF",direction = Relationship.OUTGOING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Role> roles;
+
 }
