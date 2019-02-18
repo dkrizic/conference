@@ -1,9 +1,17 @@
+return "Loading roles";
+load csv with headers from "file:/import/role.csv" as line fieldterminator ','
+	merge (r:Role {id:line.id})
+		set r.name = line.name;
+
 return "Loading persons";
 load csv with headers from "file:/import/person.csv" as line fieldterminator ','
 	merge (p:Person {id:line.id})
 		set p.name = line.name,
 			p.organization = line.organization,
-			p.hashedPassword = line.hashedPassword;
+			p.hashedPassword = line.hashedPassword
+	with line,p,split(line.roles,";") as roles
+	match (r:Role) where r.id in roles
+		merge (p)-[:MEMBER_OF]->(r);
 
 return "Loading locations";
 load csv with headers from "file:/import/location.csv" as line fieldterminator ','
