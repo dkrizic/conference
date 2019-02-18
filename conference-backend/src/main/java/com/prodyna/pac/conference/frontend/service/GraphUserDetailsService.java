@@ -15,8 +15,7 @@ import java.util.Collection;
 import static java.util.Arrays.asList;
 
 @Service
-public class FakeUserDetailsService implements UserDetailsService {
-
+public class GraphUserDetailsService implements UserDetailsService {
     @Autowired
     private PersonRepository personRepository;
 
@@ -29,6 +28,7 @@ public class FakeUserDetailsService implements UserDetailsService {
         }
         return new User(username, "password", getGrantedAuthorities(username));
     }
+
     private Collection<? extends GrantedAuthority> getGrantedAuthorities(String username) {
         Collection<? extends GrantedAuthority> authorities;
         if (username.equals("John")) {
