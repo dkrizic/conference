@@ -8,18 +8,17 @@ fi
 
 kubectl apply -f helm/$environment.yaml
 helm init --service-account helm --wait
-kubectl create namespace persistence
+kubectl create -f namespaces
+
 helm install --name neo4j --namespace persistence -f neo4j/$environment.yaml stable/neo4j
 kubectl -n persistence delete service neo4j-neo4j 
 kubectl -n persistence create -f neo4j/service.yaml
 
-kubectl create namespace monitoring
 helm install --name prometheus --namespace monitoring -f prometheus/$environment.yaml stable/prometheus
 kubectl -n monitoring create -f grafana/addons/grafana-datasource-prometheus.yaml
 kubectl -n monitoring create -f grafana/addons/grafana-dashboard-conference.yaml
 helm install --name grafana --namespace monitoring -f grafana/$environment.yaml stable/grafana
 
-kubectl create namespace conference
 helm install --name conference-backend --namespace conference -f conference-backend/$environment.yaml conference-backend
 helm install --name conference-frontend --namespace conference -f conference-frontend/$environment.yaml conference-frontend
 helm install --name conference-data --namespace conference conference-data

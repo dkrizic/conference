@@ -1,0 +1,7 @@
+helm ls | awk '{print $1}' | grep -v "NAME" | while read package
+do
+	helm delete --purge $package
+done
+kubectl delete namespace conference
+kubectl delete namespace persistence
+kubectl delete namespace monitoring
