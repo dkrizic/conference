@@ -7,7 +7,7 @@ resource "helm_release" "grafana" {
   namespace = "monitoring"
   chart = "stable/grafana"
   values = [
-    "../helm/grafana/minikube.yaml"
+    "${file("../helm/grafana/minikube.yaml")}"
   ]
 }
 
@@ -16,6 +16,6 @@ resource "helm_release" "prometheus" {
   namespace = "monitoring"
   chart = "stable/prometheus"
   values = [
-    "../helm/grafana/minikube.yaml"
+    "${file("../helm/grafana/minikube.yaml")}"
   ]
 }
