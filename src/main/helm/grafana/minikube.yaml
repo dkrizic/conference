@@ -6,7 +6,7 @@ persistence:
 ingress: 
   enabled: true
   hosts: 
-  - "grafana.192.168.99.100.nip.io"
+  - "grafana.minikube"
 sidecar:
   dashboards:
     enabled: true
