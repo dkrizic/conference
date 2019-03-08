@@ -1,5 +1,6 @@
 package com.prodyna.pac.conference.frontend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.neo4j.ogm.annotation.*;
 
@@ -18,6 +19,7 @@ public class Person {
     @Index(unique = true)
     private String name;
 
+    @JsonIgnore
     private String hashedPassword;
 
     @Relationship(type="BY_PERSON",direction=Relationship.INCOMING)
