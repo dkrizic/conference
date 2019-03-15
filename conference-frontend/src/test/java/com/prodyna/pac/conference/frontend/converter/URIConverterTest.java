@@ -21,12 +21,12 @@ public class URIConverterTest {
 
     @Test
     public void testConversion() throws Exception {
-        Assert.assertEquals(new URI("http://conference.192.168.99.100.nip.io/api/events/77"), uriConverter.convertToURI( Event.class, 77 ));
+        Assert.assertEquals(new URI("http://conference.minikube/api/events/77"), uriConverter.convertToURI( Event.class, 77 ));
     }
 
     @Test
     public void testConversion2() throws Exception {
-        Assert.assertEquals(new URI("http://conference.192.168.99.100.nip.io/api/persons/dkrizic"), uriConverter.convertToURI( Person.class, "dkrizic" ));
+        Assert.assertEquals(new URI("http://conference.minikube/api/persons/dkrizic"), uriConverter.convertToURI( Person.class, "dkrizic" ));
     }
 
 }

@@ -1,0 +1,16 @@
+authEnabled: false
+imageTag: 3.5.3-enterprise
+acceptLicenseAgreement: "yes"
+core:
+  numberOfServers: 3
+  extraVars:
+  - name: NEO4J_dbms_mode
+    value: "CORE"
+  - name: NEO4J_metrics_enabled
+    value: "true"
+  - name: NEO4J_metrics_prometheus_enabled
+    value: "true"
+  - name: NEO4J_metrics_prometheus_endpoint
+    value: "0.0.0.0:2004"
+  - name: NEO4J_dbms_security_allow__csv__import__from__file__urls
+    value: "true"
