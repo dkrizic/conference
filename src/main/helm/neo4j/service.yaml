@@ -21,12 +21,12 @@ spec:
     - port: 7474
       protocol: TCP
       targetPort: 7474
-      nodePort: 32000
+      nodePort: 32010
       name: http
     - port: 7687
       protocol: TCP
       targetPort: 7687
-      nodePort: 32001
+      nodePort: 32011
       name: bolt
   selector:
     app: neo4j
