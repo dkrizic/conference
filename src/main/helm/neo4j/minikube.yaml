@@ -1,5 +1,5 @@
 authEnabled: false
-imageTag: 3.5.0-enterprise
+imageTag: 3.5.3-enterprise
 acceptLicenseAgreement: "yes"
 core:
   numberOfServers: 1
