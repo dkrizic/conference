@@ -14,6 +14,8 @@ helm install --name neo4j --namespace persistence -f neo4j/$environment.yaml sta
 kubectl -n persistence delete service neo4j-neo4j 
 kubectl -n persistence create -f neo4j/service.yaml
 
+helm install --name conference-data --namespace conference conference-data
+
 helm install --name prometheus --namespace monitoring -f prometheus/$environment.yaml stable/prometheus
 kubectl -n monitoring create -f grafana/addons/grafana-datasource-prometheus.yaml
 kubectl -n monitoring create -f grafana/addons/grafana-dashboard-conference.yaml
@@ -21,7 +23,6 @@ helm install --name grafana --namespace monitoring -f grafana/$environment.yaml 
 
 helm install --name conference-backend --namespace conference -f conference-backend/$environment.yaml conference-backend
 helm install --name conference-frontend --namespace conference -f conference-frontend/$environment.yaml conference-frontend
-helm install --name conference-data --namespace conference conference-data
 
 echo "Grafana password"
 kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
