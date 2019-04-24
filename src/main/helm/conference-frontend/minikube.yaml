@@ -1,5 +1,9 @@
 ingress:
   enabled: true
+  tls:
+  - hosts:
+    - conference.minikube
+    secretName: minikube
   hosts: 
   - conference.minikube
 image:
