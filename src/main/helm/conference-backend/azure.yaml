@@ -10,8 +10,8 @@ neo4j:
   uri: bolt://neo4j-neo4j.persistence
 resources:
   limits:
-    cpu: 1500m
+    cpu: 150m
     memory: 1Gi
   requests:
-    cpu: 1000m
+    cpu: 100m
     memory: 1Gi
