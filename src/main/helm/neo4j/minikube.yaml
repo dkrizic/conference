@@ -3,6 +3,8 @@ imageTag: 3.5.3-enterprise
 acceptLicenseAgreement: "yes"
 core:
   numberOfServers: 1
+  persistentVolume:
+    size: 1Gi
   extraVars:
   - name: NEO4J_dbms_mode
     value: "SINGLE"

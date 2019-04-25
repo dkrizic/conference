@@ -50,3 +50,4 @@ affinity: {}
 conference:
   backend:
     uri: http://conference-backend
+
