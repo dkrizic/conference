@@ -9,5 +9,5 @@ spec:
     apiVersion: extensions/v1beta1
     kind: Deployment
     name: conference-backend
-  targetCPUUtilizationPercentage: 30
+  targetCPUUtilizationPercentage: 80
 
