@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: conference-backend
+  namespace: conference
+spec:
+  podSelector:
+    matchLabels:
+      name: conference-backend
+  policyTypes:
+  - Egress
+  - Ingress
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: persistence
+      podSelector:
+        matchLabels:
+          app: neo4j
+    ports:
+    - protocol: TCP
+      port: 7687
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: conference-frontend
+    ports:
+    - protocol: TCP
+      port: 80

@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "application.fullname" . }}
   labels:
+    app: {{ include "application.name" . }}
     app.kubernetes.io/name: {{ include "application.name" . }}
     helm.sh/chart: {{ include "application.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
@@ -16,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        name: {{ include "application.name" . }}
+        app: {{ include "application.name" . }}
         app.kubernetes.io/name: {{ include "application.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:

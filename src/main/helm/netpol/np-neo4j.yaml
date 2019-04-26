@@ -17,6 +17,14 @@ spec:
       podSelector:
         matchLabels:
           name: conference-backend
+    - namespaceSelector:
+        matchLabels:
+          name: conference
+      podSelector:
+        matchLabels:
+          name: conference-data
     ports:
     - protocol: TCP
       port: 7687
+    - protocol: TCP
+      port: 7474
