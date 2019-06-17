@@ -1,0 +1,3 @@
+#!/bin/bash
+PWD=$(pwd)
+cat merge.cypher | sed -e "s#file:/import/#file:$PWD/#g" | cypher-shell
