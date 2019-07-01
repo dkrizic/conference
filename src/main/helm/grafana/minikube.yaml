@@ -5,10 +5,6 @@ persistence:
   - ReadWriteOnce
 ingress: 
   enabled: true
-  tls:
-  - hosts:
-    - "grafana.minikube"
-    secretName: minikube
   hosts: 
   - "grafana.minikube"
 sidecar:

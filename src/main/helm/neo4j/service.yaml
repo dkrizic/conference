@@ -8,7 +8,7 @@ metadata:
     component: core
     heritage: Tiller
     release: neo4j
-  name: neo4j-neo4j
+  name: neo4j-nodeport
   namespace: persistence
   annotations:
     prometheus.io/path: /metrics

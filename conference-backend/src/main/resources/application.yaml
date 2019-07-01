@@ -17,8 +17,7 @@ spring:
         enabled: true
   data:
     neo4j:
-#      uri: bolt://minikube:32011
-      uri: bolt://localhost
+      uri: bolt://minikube:32011
     rest:
       basePath: /api
 management:
@@ -35,4 +34,3 @@ management:
         auto-time-requests: true
   security:
     enabled: false
-
