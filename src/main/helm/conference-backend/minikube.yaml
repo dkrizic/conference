@@ -7,9 +7,6 @@ image:
 neo4j:
   uri: bolt://neo4j-neo4j.persistence
 resources:
-  cpu: 1
-  memory: 1Gi
-resources:
   limits:
     cpu: 2000m
     memory: 2Gi
