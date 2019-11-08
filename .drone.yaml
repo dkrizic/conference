@@ -1,0 +1,10 @@
+--
+kind: pipeline
+name: default
+
+steps:
+- name: conference
+  image: maven
+  commands:
+  - mvn package
+
