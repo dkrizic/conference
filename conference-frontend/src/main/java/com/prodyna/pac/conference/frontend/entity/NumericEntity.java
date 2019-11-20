@@ -22,7 +22,7 @@ public abstract class NumericEntity {
     }
 
     public long numericId() {
-        String[] parts = get_id().getPath().toString().split("/");
+        String[] parts = get_id().getPath().split("/");
         String numeric = parts[ parts.length - 1];
         return Long.parseLong( numeric );
     }

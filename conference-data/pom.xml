@@ -8,7 +8,7 @@
     <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>conference-frontend</name>
+    <name>conference-data</name>
     <description>Conferencing backend</description>
 
     <parent>
@@ -20,8 +20,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
-        <version.dockerfile.maven.plugin>1.4.9</version.dockerfile.maven.plugin>
+        <java.version>13</java.version>
+        <version.dockerfile.maven.plugin>1.4.12</version.dockerfile.maven.plugin>
     </properties>
 
     <build>

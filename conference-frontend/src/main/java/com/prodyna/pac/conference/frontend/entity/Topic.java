@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @RemoteResource("/api/topics")
+@EqualsAndHashCode(callSuper = true)
 public class Topic extends NumericEntity {
 
     private String id;

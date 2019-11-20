@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @RemoteResource("/api/levels")
+@EqualsAndHashCode(callSuper = true)
 public class Level extends NumericEntity {
 
     private int id;

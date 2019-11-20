@@ -8,6 +8,7 @@ import uk.co.blackpepper.bowman.annotation.RemoteResource;
 
 @Data
 @RemoteResource("/api/slots")
+@EqualsAndHashCode(callSuper = true)
 public class Slot extends NumericEntity {
 
     @ToString.Exclude

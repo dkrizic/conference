@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @RemoteResource("/api/languages")
+@EqualsAndHashCode(callSuper = true)
 public class Language extends NumericEntity {
 
     private String id;

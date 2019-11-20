@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Data
 @RemoteResource("/api/events")
+@EqualsAndHashCode(callSuper = false)
 public class Event extends NumericEntity {
 
     @ToString.Exclude

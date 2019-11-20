@@ -1,6 +1,7 @@
 package com.prodyna.pac.conference.frontend.entity;
 
 
+import lombok.EqualsAndHashCode;
 import uk.co.blackpepper.bowman.annotation.LinkedResource;
 import uk.co.blackpepper.bowman.annotation.RemoteResource;
 

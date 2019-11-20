@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @RemoteResource("/api/rooms")
+@EqualsAndHashCode(callSuper = true)
 public class Room extends NumericEntity {
 
     @ToString.Exclude
