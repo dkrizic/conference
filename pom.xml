@@ -5,7 +5,7 @@
 
     <groupId>com.prodyna.pac.conference</groupId>
     <artifactId>conference</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -20,7 +20,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
         <version.dockerfile.maven.plugin>1.4.9</version.dockerfile.maven.plugin>
-        <kotlin.version>1.3.10</kotlin.version>
     </properties>
 
 </project>

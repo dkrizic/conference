@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-@RepositoryRestResource(path="/topics")
+@RepositoryRestResource(path="topics")
 @Timed
 public interface TopicRepository extends Neo4jRepository<Topic,Long> {
 

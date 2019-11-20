@@ -13,7 +13,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path="/talks")
+@RepositoryRestResource(path="talks")
 @Timed
 public interface TalkRepository extends Neo4jRepository<Talk,Long> {
 

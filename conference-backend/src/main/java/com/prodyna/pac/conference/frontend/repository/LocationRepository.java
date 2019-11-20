@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path="/locations",excerptProjection = LocationDescription.class)
+@RepositoryRestResource(path="locations",excerptProjection = LocationDescription.class)
 @Timed
 public interface LocationRepository extends Neo4jRepository<Location,Long> {
 

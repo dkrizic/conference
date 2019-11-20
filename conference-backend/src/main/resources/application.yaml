@@ -26,11 +26,16 @@ management:
     prometheus.enabled: true
   endpoints:
     web:
-      exposure.include: info,health,metrics,prometheus
+      exposure:
+        include: info,health,metrics,prometheus
   metrics:
-    export.prometheus.enabled: true
+    export:
+      prometheus:
+        enabled: true
     web:
       server:
-        auto-time-requests: true
+        request:
+          autotime:
+            enabled: true
   security:
     enabled: false

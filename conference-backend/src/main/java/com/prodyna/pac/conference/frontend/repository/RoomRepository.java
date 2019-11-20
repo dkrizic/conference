@@ -14,7 +14,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path="/rooms")
+@RepositoryRestResource(path="rooms")
 @Timed
 public interface RoomRepository extends Neo4jRepository<Room,Long> {
 

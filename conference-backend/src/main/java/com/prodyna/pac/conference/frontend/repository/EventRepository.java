@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-@RepositoryRestResource(path="/events",excerptProjection = EventDescription.class)
+@RepositoryRestResource(path="events",excerptProjection = EventDescription.class)
 @Timed
 public interface EventRepository extends Neo4jRepository<Event,Long> {
 

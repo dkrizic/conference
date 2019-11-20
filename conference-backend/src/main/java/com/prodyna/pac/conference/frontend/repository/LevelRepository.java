@@ -14,7 +14,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path="/levels")
+@RepositoryRestResource(path="levels")
 @Timed
 public interface LevelRepository extends Neo4jRepository<Level,Long> {
 

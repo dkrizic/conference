@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path="/languages")
+@RepositoryRestResource(path="languages")
 @Timed
 public interface LanguageRepository extends Neo4jRepository<Language,Long> {
 

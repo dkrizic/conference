@@ -12,7 +12,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RepositoryRestResource(path="/slots", excerptProjection = SlotDescription.class)
+@RepositoryRestResource(path="slots", excerptProjection = SlotDescription.class)
 @Timed
 public interface SlotRepository extends Neo4jRepository<Slot,Long> {
 

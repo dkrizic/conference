@@ -12,7 +12,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RepositoryRestResource(path="/persons")
+@RepositoryRestResource(path="persons")
 @Timed
 public interface PersonRepository extends Neo4jRepository<Person,Long> {
     // using default
