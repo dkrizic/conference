@@ -1,10 +1,10 @@
---
 kind: pipeline
+type: kubernetes
 name: default
 
 steps:
-- name: conference
-  image: maven
+- name: greeting
+  image: alpine
   commands:
-  - mvn package
-
+  - echo hello
+  - echo world
