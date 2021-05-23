@@ -186,7 +186,7 @@ for accessing the UI.
 ## Create a Kubernetes cluster in google cloud
 
     $ gcloud container clusters create --addons=HttpLoadBalancing,KubernetesDashboard --enable-network-policy -m n1-standard-2 --zone=europe-west4-a --num-nodes=3 conference
-    $ gloud container clusters list
+    $ gcloud container clusters list
     $ kubectl create serviceaccount --namespace kube-system tiller
     $ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
     $ helm init --wait
@@ -233,5 +233,3 @@ for accessing the UI.
 
    $ kubectl -n conference port-forward $(kubectl -n conference get pods | grep conference-frontend | awk '{print $1}') 8080:80
    $ open http://localhost:8080/
-
-t
